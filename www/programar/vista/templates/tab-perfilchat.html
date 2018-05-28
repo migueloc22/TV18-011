@@ -1,0 +1,189 @@
+<ion-view view-title="perfil chat">
+        <ion-nav-buttons side="left" >
+         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+        <a href="#/tab/dash" class="button button-icon  ion-chevron-left">
+        </a>
+      </ion-nav-buttons>
+      <style type="text/css">
+  *{
+  margin:0;
+}
+
+.contenedor{
+  width:90px;
+  height:240px;
+  position:absolute;
+  right:0px;
+  z-index: 1;
+  bottom:40px;
+}
+.botonF1{
+  width:60px;
+  height:60px;
+  border-radius:100%;
+  background:#ffc900;
+  right:0;
+  bottom:0;
+  position:absolute;
+  margin-right:16px;
+  margin-bottom:16px;
+  border:none;
+  outline:none;
+  color:#FFF;
+  font-size:36px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+}
+span{
+  transition:.5s;  
+}
+.botonF1:hover span{
+  transform:rotate(360deg);
+}
+.botonF1:active{
+  transform:scale(1.1);
+}
+.btn{
+  width:40px;
+  height:40px;
+  border-radius:100%;
+  border:none;
+  color:#FFF;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  font-size:28px;
+  outline:none;
+  position:absolute;
+  right:0;
+  bottom:0;
+  margin-right:26px;
+  transform:scale(0);
+}
+.botonF2{
+  background:#2196F3;
+  margin-bottom:85px;
+  transition:0.5s;
+}
+.botonF3{
+  background:#673AB7;
+  margin-bottom:130px;
+  transition:0.7s;
+}
+.botonF4{
+  background:#009688;
+  margin-bottom:175px;
+  transition:0.9s;
+}
+.botonF5{
+  background:#FF5722;
+  margin-bottom:220px;
+  transition:0.99s;
+  z-index: 5;
+}
+.animacionVer{
+  transform:scale(1);
+}
+
+</style>
+  <ion-content class="padding">
+<!--
+<div class="list">
+
+    <a class="item item-avatar" href="#/tab/chat">
+      <img src="../../img/adam.jpg">
+      <h2>Venkmanaa</h2>
+      <p>Back off, man. I'm a scientist.</p>
+    asdasdsad
+    </a>
+
+    ...
+
+</div>
+id="list_userlocal"
+-->
+
+<div ><center><br><br><br><br><h3>chat en dessarrollo ....</h3></center></div>
+
+  </ion-content>
+<!--
+<div class="contenedor">
+<button class="botonF1">
+ <span class="button-icon ion-person-add"></span>
+</button>
+
+<button class="btn botonF2">
+  <span>+</span>
+</button>
+<button class="btn botonF3">
+  <span>+</span>
+</button>
+<button class="btn botonF4">
+  <span>+</span>
+</button>
+<button class="btn botonF5">
+  <span>+</span>
+</button>
+
+-->
+ </div>
+</ion-view>
+
+<script type="text/javascript" src="../../js/cuenta.js"></script>
+<script type="text/javascript">
+  $('.botonF1').hover(function(){
+  $('.btn').addClass('animacionVer');
+})
+$('.contenedor').mouseleave(function(){
+  $('.btn').removeClass('animacionVer');
+})
+
+  $('.botonF1').on('click',function(){
+location.href = "#/tab/chat";
+  });
+
+dat();
+function dat(){
+  var chatuser="";
+
+
+         $.ajax({ url: 'http://192.168.1.20/apptivos/www/programar/controlador/Clogin.php',
+         type: 'POST',
+           data: {action: 'chatusuarios'}
+     })
+.done(function(data) {
+  var datos = JSON.parse(data);
+       $.each(datos,function(fila,valor){
+
+var datoscache = JSON.parse(localStorage.getItem(valor.Id_usuario));
+
+if (datoscache!=null) {
+switch(datoscache.idrol){
+case '2':
+        chatuser+=  "<a class='item item-avatar' href='templates/tab-chatear.html' >"+
+      "<img src='../../img/adam.jpg'>"+
+      "<h2>"+datoscache.nombre+"</h2></a>";
+  break;
+  case '3':
+  console.log(datoscache);
+        chatuser+=  "<a class='item item-avatar' href='templates/tab-chatear.html'  >"+
+      "<img src='../../img/adam.jpg'>"+
+      "<h2>"+valor.nombre+" "+valor.apellido+ " </h2>"+
+       "<p>profesion: "+valor.profesion+"</p>"+
+       "<p>experiencia: "+valor.experiencia+" años</p></a><a href='#'  onclick=borrarusuario("+valor.Id_usuario+")  class='button button-clear button-positive'>eliminar</a>";
+  break;
+}
+
+}
+$("#list_userlocal").html(chatuser);
+
+});    
+
+
+});     
+}
+
+function borrarusuario(id){
+localStorage.removeItem(id);
+dat();
+}
+</script>

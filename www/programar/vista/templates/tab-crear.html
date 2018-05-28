@@ -1,0 +1,85 @@
+<ion-view view-title="Nueva cuenta">
+  <ion-content>
+    <ion-list>
+      <div id="registrar" class="list">
+
+        <label class="item item-input item-stacked-label     datalabel">
+          <span class="input-label">Nombre</span>
+          <input type="text" id="nombreR" maxlength="70">
+          <p></p>
+        </label>
+        <label class="item item-input item-stacked-label  datalabel">
+          <span class="input-label">Apellido</span>
+          <input type="text" id="apellidoR" maxlength="50">
+          <p></p>
+        </label>
+        <label class="item item-input item-stacked-label    datalabel">
+          <span class="input-label">Correo</span>
+          <input type="email" id="emailR" maxlength="90">
+          <p></p>
+        </label>
+
+        <label class="item item-input item-stacked-label   datalabel">
+          <span class="input-label" maxlength="100">contraseña</span>
+          <input type="password" id="passwordR">
+          <p></p>
+        </label>
+
+
+        <label class="item item-input item-stacked-label  datalabel">
+          <span class="input-label">contraseña</span>
+          <input type="password" maxlength="100" id="passworda">
+          <p></p>
+        </label>
+        <center>
+          <button class="button button-full button-energized " name="regis">
+            <i class="ion-person-add"></i>
+            crear cuenta
+          </button>
+        </center>
+
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>
+<script type="text/javascript">
+  $("[name=regis]").on('click', function (e) {
+
+    e.preventDefault();
+
+    var nombre = $("#nombreR").val();
+    var apellido = $("#apellidoR").val();
+    var correo = $("#emailR").val();
+    var password = $("#passwordR").val();
+    var password1 = $("#passworda").val();
+    vlNombre();
+    vltxtCorreo();
+    vlApellido();
+    vlPass1();
+    vlPass2();
+    if (vltxtCorreo() && vlNombre() && vlApellido() && vlPass1() && vlPass2()) {
+      var ipServe = "http://13.90.197.134/migueloc/apptivos/";
+      var ruta = "apptivos/www/programar/controlador/Clogin.php";
+      var urlServe = ipServe + ruta;
+      $.ajax({
+        url: urlServe,
+        data: {
+          action: 'registrarUsuarios',
+          nombreR: "'" + nombre + "'",
+          apellidoR: "'" + apellido + "'",
+          correoR: "'" + correo + "'",
+          passwordR: "'" + password + "'",
+        },
+        type: 'POST',
+        success: function (output) {
+          alert(output);
+
+        }
+      });
+      $("input").val("");
+    }
+
+
+
+  });
+</script>

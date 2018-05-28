@@ -1,0 +1,43 @@
+<ion-view view-title="Perfil">
+  <ion-content>
+    <ion-list>
+
+      <style type="text/css">
+        .img-circle {
+          border-radius: 80%;
+          width: 40%;
+          display: block;
+          text-align: center;
+
+        }
+      </style>
+      <center>
+        <a href="#/tab/account">
+          <img class='img-circle' id="smallImage" src='../../img/camara.jpg' />
+        </a>
+        <a href="#" class="button button-icon  ion-ios-camera" onclick="capturePhotoEdit();" style="font-size: 60px; color:#4949bb"></a>
+        <a href="#" class="button button-icon ion-images" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" style="font-size: 60px; color:#4949bb"></a>
+
+      </center>
+      <div class="list">
+        <label class="item item-input item-stacked-label datalabel">
+          <span class="input-label">Nombre</span>
+          <input type="text" id="nombreperfilpadre">
+          <br>
+          <p></p>
+        </label>
+        <label class="item item-input item-stacked-label datalabel">
+          <span class="input-label">Apellido</span>
+          <input type="text" id="apellidoperfilpadre">
+          <br>
+          <p></p>
+        </label>
+        <label class="item">
+          <button class="button button-block button-energized" type="submit" id="updateregistro">Guardar</button>
+        </label>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>
+
+<script type="text/javascript" src="../../js/cuenta.js"></script>

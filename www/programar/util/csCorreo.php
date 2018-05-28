@@ -1,0 +1,52 @@
+<?php
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+   include 'src/Exception.php';
+   include 'src/PHPMailer.php';
+   include 'src/SMTP.php';
+   include 'src/OAuth.php';
+    class csCorreo
+    {
+        
+        function correo($correo , $html ,$msn)
+        {
+            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+            try {
+                //Server settings
+                $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+                $mail->isSMTP();                                      // Set mailer to use SMTP
+                $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                $mail->Username = 'migueloc22@gmail.com';                 // SMTP username
+                $mail->Password = 'mac1120375190';                           // SMTP password
+                $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                $mail->Port = 587;                                    // TCP port to connect to
+
+                //Recipients
+                $mail->setFrom('migueloc22@gmail.com');
+                $mail->addAddress('migueloc22@gmail.com');     // Add a recipient
+                $mail->addAddress($correo);               // Name is optional
+                //$mail->addReplyTo('info@example.com', 'Information');
+                //$mail->addCC('cc@example.com');
+                //$mail->addBCC('bcc@example.com');
+
+                //Attachments
+            // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+                //Content
+                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->Subject = 'Mac';
+                $mail->Body    = $html;
+                //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+                $mail->send();
+                echo $msn;
+            } catch (Exception $e) {
+                echo 'El Mensaje no fue enviado Error: ', $mail->ErrorInfo;
+            }
+        }
+    }
+    $csCorreo= new csCorreo();
+    $csCorreo->correo('macifuentes09@misena.edu.co','Migueloc22','ok');
+?>

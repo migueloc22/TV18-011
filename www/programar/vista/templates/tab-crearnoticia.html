@@ -1,0 +1,43 @@
+<ion-modal-view>
+  <ion-header-bar class="title">
+    <h1 class="title" ><p class="blanco">Crear Noticia</p></h1>
+    <div class="buttons" >
+      <button class="button button-clear" ng-click="closenoticia()"><p class="blanco">X</p></button>
+    </div>
+
+  </ion-header-bar>
+  <ion-content>
+
+ <div class="list card">
+ 
+<div class='item item-avatar'>
+    <img src="" id="fotoespecialista">
+       <h2 id="nombreespecialista"></h2>
+  <p id="fechahoy"></p>
+</div>
+  <div class='item item-body'>
+    <img class='full-image' src="../../img/doctor.png" id="imgnoticia">
+    <center>
+   <a href="#" class="button button-icon  ion-ios-camera" onclick="capturePhotoEditnoticia();"  style="font-size: 60px; color:#4949bb"></a>
+<a href="#" class="button button-icon ion-images" onclick="getPhotonoticia(pictureSource.PHOTOLIBRARY);"  style="font-size: 60px; color:#4949bb"></a>
+</center>
+           <div class="list list-inset">
+          <label class="item item-input">
+            <textarea placeholder="descripcion"></textarea>
+          </label>
+    
+ </div>
+</div>
+
+      <button class="button button-full button-energized   " id="guardarnoticia" name="guardarnoticia">
+    <i class="ion-android-send"></i>
+          enviar 
+</button>
+
+</div>
+
+
+
+  </ion-content>
+</ion-modal-view>
+

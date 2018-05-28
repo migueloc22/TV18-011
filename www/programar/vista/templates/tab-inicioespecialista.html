@@ -1,0 +1,203 @@
+
+<style type="text/css">
+	.img-circle {
+    border-radius: 70%;
+    width:40%;
+    display:block; text-align:center;
+}
+	.img-circle-niños {
+    border-radius: 70%;
+    width:70%;
+    display:block; text-align:center;
+    background-color: white;
+}
+  .img-circle-niños30 {
+    border-radius: 100%;
+    width:20%;
+    display:block; text-align:center;
+    background-color: white;
+}
+  .img-circle-niños1 {
+    border-radius: 100%;
+    width:90%;
+    display:block; text-align:center;
+}
+  .img-circle-niños22 {
+    border-radius: 30%;
+    width:80%;
+    display:block; text-align:center;
+    background-color: white;
+    padding-left:20%;
+}
+#da{
+  background-color:green;
+}
+
+.title{
+ background-color:rgb(255, 201, 0);  
+}
+.blanco{
+  color: white;
+}
+li {
+    float: left;
+}
+
+  *{
+  margin:0;
+}
+
+.contenedor{
+  width:90px;
+  height:240px;
+  position:absolute;
+  right:0px;
+  z-index: 1;
+  bottom:40px;
+}
+.boton55{
+  width:60px;
+  height:60px;
+  border-radius:100%;
+  background:#1dd752;
+  right:0;
+  bottom:0;
+  position:absolute;
+  margin-right:16px;
+  margin-bottom:16px;
+  border:none;
+  outline:none;
+  color:#FFF;
+  font-size:36px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+}
+span{
+  transition:.5s;  
+}
+.boton55:hover span{
+  transform:rotate(360deg);
+}
+.boton55:active{
+  transform:scale(1.1);
+}
+.btn{
+  width:40px;
+  height:40px;
+  border-radius:100%;
+  border:none;
+  color:#FFF;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  font-size:28px;
+  outline:none;
+  position:absolute;
+  right:0;
+  bottom:0;
+  margin-right:26px;
+  transform:scale(0);
+}
+.botonF2{
+  background:#2196F3;
+  margin-bottom:85px;
+  transition:0.5s;
+}
+.botonF3{
+  background:#673AB7;
+  margin-bottom:130px;
+  transition:0.7s;
+}
+.botonF4{
+  background:#009688;
+  margin-bottom:175px;
+  transition:0.9s;
+}
+.botonF5{
+  background:#FF5722;
+  margin-bottom:220px;
+  transition:0.99s;
+  z-index: 5;
+}
+.animacionVer{
+  transform:scale(1);
+}
+p.delgadez{
+color:#f60202;
+
+}
+p.Obesidad{
+color:#f60202;
+
+}
+</style>
+
+<ion-view view-title="niños">
+  <ion-content class="padding">
+<div class="bar bar-header item-input-inset">
+  <label class="item-input-wrapper">
+    <i class="icon ion-ios-search placeholder-icon"></i>
+    <input type="search" placeholder="Search">
+  </label>
+  <button class="button button-energized">
+    Buscar
+  </button>
+</div>
+
+
+  
+<div id="listahijos">
+  
+</div>
+
+
+<!--
+    <a class="button button-block button-balanced" href="#/tab/perfilchat"> Chat clientes <i class="icon ion-chatbox-working"></i></a>
+  <a class="button button-block button-positive" href="#/tab/noticias"> Noticias <i class="icon ion-easel"></i></a>
+  <a class="button button-block button-assertive" href="#/tab/carro"> Productos <i class="icon ion-ios-cart"></i></a>
+
+
+
+  <ion-item menu-close ng-click="login()" class='img-circle-niños'>
+   
+ </ion-item>
+<img class='img-circle-niños' src='../avatares/mujer3.jpg' />
+<p  class='img-circle-niños'>ana martinez</p>
+-->
+  </ion-content>
+      <div class="contenedor">
+<button class="boton55">
+ <span class="icon ion-chatbox-working"></span>
+</button>
+
+<!--<button class="btn botonF2">
+  <span>+</span>
+</button>
+<button class="btn botonF3">
+  <span>+</span>
+</button>
+<button class="btn botonF4">
+  <span>+</span>
+</button>
+<button class="btn botonF5">
+  <span>+</span>
+</button>
+
+-->
+ </div>
+
+<script type="text/javascript" src="../../js/cuentaespecialista.js"></script>
+
+ <script type="text/javascript">
+    $('.boton55').hover(function(){
+  $('.btn').addClass('animacionVer');
+})
+$('.contenedor').mouseleave(function(){
+  $('.btn').removeClass('animacionVer');
+})
+
+  $('.boton55').on('click',function(){
+location.href = "#/tab/perfilchat";
+  });
+</script>
+
+</ion-view>
+

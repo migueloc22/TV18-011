@@ -1,0 +1,82 @@
+<ion-modal-view>
+  <ion-header-bar class="title">
+    <h1 class="title">
+      <p class="blanco">hijo</p>
+    </h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closehijo()">
+        <p class="blanco">Close</p>
+      </button>
+    </div>
+
+  </ion-header-bar>
+  <ion-content>
+
+    <form ng-submit="doLogin()" id="img">
+
+      <table class="col-offset-33" id="da">
+        <td>
+
+          <div id="presentacion2"></div>
+        </td>
+      </table>
+      <div id="emoticones"></div>
+
+
+      <p class="obligatorio" style="color: green"></p>
+      <div class="list">
+
+        <label class="item item-input">
+          <span class="input-label">Nombre</span>
+          <input type="text" id="nombrehijo1"><br>
+          <p></p>
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Apellido</span>
+          <input type="text" id="apellidohijo2"><br>
+          <p></p>
+        </label>
+
+        <!--
+          <label class="item item-input">
+          <span class="input-label" >Colegio</span>
+          <input type="text" id="colegiohijo">
+        </label>
+      -->
+        <label class="item item-input">
+          <span class="input-label">Ciudad</span><br>
+          <input type="text" id="ciudadhijo2"><br>
+          <p></p>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            sexo
+          </div>
+          <select id="sexohijo">
+            <option selected></option>
+            <option>hombre</option>
+            <option>mujer</option><br>
+          </select>
+          <br>
+          <p></p>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">nacimiento</span>
+          <input type="date" id="fechahijo"><br>
+          <p></p>
+        </label>
+        <p class="obligatorio" style="color: green"></p>
+        <label class="item">
+          <button class="button button-block button-energized" id="regisHijo" type="submit">Guardar</button>
+        </label>
+      </div>
+
+    </form>
+
+
+
+
+  </ion-content>
+</ion-modal-view>
+<script type="text/javascript" src="../../js/cuenta.js"></script>

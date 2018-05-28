@@ -1,0 +1,51 @@
+<ion-view view-title="controles">
+        <ion-nav-buttons side="left" >
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+        <a href="#/tab/inicioespecialista" class="button button-icon  ion-chevron-left">
+        </a>
+      </ion-nav-buttons>
+  <ion-content class="padding">
+
+
+
+    <div id="chart_div"></div>
+
+<canvas id="line-chart" width="100%" height="100%"></canvas>
+
+
+  </ion-content>
+
+
+</ion-view>
+  <script type="text/javascript">
+new Chart(document.getElementById("line-chart"), {
+  type: 'line',
+  data: {
+    labels: ['0'],
+    datasets: [{ 
+        data: [0],
+        label: "exeseso de peso",
+        borderColor: "#EC7063",
+        fill: false
+      }, { 
+        data: [0],
+        label: "normal",
+        borderColor: "#7DCEA0",
+        fill: false
+      }, { 
+        data: [0],
+        label: "bajo de peso",
+        borderColor: "#F7DC6F",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Estado de salud'
+    }
+  }
+});
+</script>
