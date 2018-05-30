@@ -38,7 +38,7 @@
         
         }
     }
-
+    session_start();
     function updateregistro(){
     $id= $_SESSION["Idusuario"];
     $nombre= $_POST["nombre"];
@@ -115,7 +115,7 @@
     echo json_encode($imc);
     }
     function sessionavatar(){
-        $nombre= $_SESSION["nombre"];
+    $nombre= $_SESSION["nombre"];
     $id = $_SESSION["Idusuario"];
     $clase=new Usuario();
 

@@ -40,31 +40,34 @@ class Usuario{
             }
       }
       public function ValidarUser($correo,$codigo){
-            $classconex= new conex();
-            $conn=$classconex->conec();
-            $result=$conn->enviarquery("SELECT * FROM usuario WHERE correo=$correo");
-            if ($row = mysql_fetch_array($result)) {
+            $link = mysqli_connect("localhost", "root", "", "apptivos");
+            $query="SELECT * FROM usuario WHERE correo='".$correo."'" ;
+            $result = mysqli_query($link, $query);
+            if ($row =  mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                   if ($row['cod_active'] == $codigo) {
-                        Cambiosuario_est($row['cod_active'] ,1);
+                        $iduser=$row['Id_usuario'] ;
+                        $classconex= new conex();
+                        $conn=$classconex->conec();
+                        $datosfoto=$conn->enviarquery("UPDATE usuario  set idestado=1 WHERE Id_usuario=".$iduser);
+                        echo $iduser;
+                        return $datosfoto;
+                        if (!$datosfoto) {
+                        echo $this->error="error";
+                        }
                   }
                   else{
                    echo "Codigo no valido";
                   } 
              }
              else{
-                  echo "No encuentra correo electronico";
+                  echo "Npo encuentra correo electronico";
              }      
       }
       public function Cambiosuario_est($iduser,$idestado){
-            $classconex= new conex();
-            $conn=$classconex->conec();
-                  $datosfoto=$conn->enviarquery("UPDATE usuario  set idestado=$idestado WHERE Id_usuario=$iduser");
+            
       
       
-            return $datosfoto;
-            if (!$datosfoto) {
-            echo $this->error="error";
-            }
+            
       }
 
       public function fotousuario($iduser,$foto){

@@ -12,6 +12,7 @@ if(isset($_POST['action'])) {
     }
 }
  function datosUsuarios(){
+session_start();
 $correoI = $_POST['correoI'];
 $passwordI = $_POST['passwordI'];
 $VerficarDatos= new Usuario();
@@ -69,7 +70,7 @@ echo 'false1';
 
 	$RegistrarDatos->registroUser("$nombreR","$apellidoR","$correoR",md5("$passwordR"),"$cod_active","$inactivo","$rol");
 	$csCorreo= new csCorreo();
-    $csCorreo->correo($correoR,'El codigo es  '.$cod_active);
+    $csCorreo->correo("macifuentes09@misena.edu.co",'El codigo es  '.$cod_active,"hola");
 	 echo (json_encode("La cuenta fue creada con exito, a su correo llego un mensaje para activar la cuenta "));
 	}else{
 		echo (json_encode("el correo ya existe"));

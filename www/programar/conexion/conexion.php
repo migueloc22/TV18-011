@@ -2,7 +2,7 @@
 
 class conex{
 public function conec(){
-	$conn =new conexion('50.62.209.186:3306','emerson','123456789','apptivos');
+	$conn =new conexion('localhost','root','','apptivos');
 	return $conn;
 }
 }
@@ -27,6 +27,8 @@ $this->conecc();
 
 
 }
+function getConex() 
+{ return $conexion; } 
 
 	private function conecc(){
 		$this->conexion =mysqli_connect($this->username,$this->root,$this->password,$this->base); 
