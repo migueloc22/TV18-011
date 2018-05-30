@@ -10,7 +10,7 @@ function datoshijo() {
   var diahoy = parseInt(fecha.getDate());
   var id = localStorage.getItem("idhijos");
   $.ajax({
-      url: 'http://192.168.1.20/apptivos/www/programar/controlador/Clogin.php',
+      url: 'http://192.168.1.20/www/programar/controlador/Clogin.php',
       type: 'POST',
       data: {
         action: 'ConsultaAvatart',
@@ -52,7 +52,7 @@ actividad();
 function actividad() {
   var acty = "";
   $.ajax({
-      url: 'http://192.168.1.20/apptivos/www/programar/controlador/Clogin.php',
+      url: 'http://192.168.1.20/www/programar/controlador/Clogin.php',
       type: 'POST',
       data: {
         action: 'actividad'
@@ -328,7 +328,7 @@ function calcularzscore(peso, edad, estatura,
 
       if (confirm("El estado de salud es: " + estados + " si esta seguro de peso " + peso + "kg y la" + " talla " + estatura + " cm son correctos clic en aceptar")) {
         $.ajax({
-          url: 'http://192.168.1.20/apptivos/www/programar/controlador/Clogin.php',
+          url: 'http://192.168.1.20/www/programar/controlador/Clogin.php',
           data: {
             action: 'CrearDtosResult',
             imc: "'" + caculado_imc + "'",

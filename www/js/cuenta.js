@@ -1,6 +1,6 @@
 //var socket=io.connect('http://190.67.248.85:8080', { 'forceNew': true });
-var ipServe = "http://13.90.197.134/migueloc/apptivos/";
-var ruta = "apptivos/www/programar/controlador/Clogin.php";
+var ipServe = "http://10.73.52.102/GitHub/TV18-011/";
+var ruta = "www/programar/controlador/Clogin.php";
 var urlServe = ipServe + ruta;
 noticias();
 var nrws = "";
@@ -43,8 +43,8 @@ function noticias() {
 
 
 $("#updateregistro").on('click', function () {
-  var ipServe = "http://13.90.197.134/migueloc/apptivos/";
-  var ruta = "apptivos/www/programar/controlador/Clogin.php";
+  var ipServe = "http://10.73.52.102/GitHub/TV18-011/";
+  var ruta = "www/programar/controlador/Clogin.php";
   var urlServe = ipServe + ruta;
   var nombreperfilpadre = $("#nombreperfilpadre").val();
   var apellidoperfilpadre = $("#apellidoperfilpadre").val();

@@ -48,11 +48,11 @@ class Usuario{
                         Cambiosuario_est($row['cod_active'] ,1);
                   }
                   else{
-                   
+                   echo "Codigo no valido";
                   } 
              }
              else{
-
+                  echo "No encuentra correo electronico";
              }      
       }
       public function Cambiosuario_est($iduser,$idestado){
