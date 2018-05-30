@@ -37,9 +37,35 @@ class Usuario{
             return $datosClient;
             if (!$datosClient) {
             echo $this->error="error";
+            }
       }
-      }
+      public function ValidarUser($correo,$codigo){
+            $classconex= new conex();
+            $conn=$classconex->conec();
+            $result=$conn->enviarquery("SELECT * FROM usuario WHERE correo=$correo");
+            if ($row = mysql_fetch_array($result)) {
+                  if ($row['cod_active'] == $codigo) {
+                        Cambiosuario_est($row['cod_active'] ,1);
+                  }
+                  else{
+                   
+                  } 
+             }
+             else{
 
+             }      
+      }
+      public function Cambiosuario_est($iduser,$idestado){
+            $classconex= new conex();
+            $conn=$classconex->conec();
+                  $datosfoto=$conn->enviarquery("UPDATE usuario  set idestado=$idestado WHERE Id_usuario=$iduser");
+      
+      
+            return $datosfoto;
+            if (!$datosfoto) {
+            echo $this->error="error";
+            }
+      }
 
       public function fotousuario($iduser,$foto){
       $classconex= new conex();
@@ -318,46 +344,28 @@ class Usuario{
 
       public function inserResult($numhijo,$imc,$peso,$estatura,$estado,$actividad,$tmb){
             $classconex= new conex();
-      $conn=$classconex->conec();
-      $hoy = date("Y-m-d");
-      $mesfecha=date("n");
-      $aniactual=date("Y");
-      $avasadomes=$mesfecha+1;
-
-      if ($mesfecha==12) {
-      $sumaanio=$aniactual+1;
-      $restames=$mesfecha-11;
-      $fechanueva=date("Y-".$restames."-"+$sumaanio);
-
-      }else{
-      $fechanueva=date("Y-".$avasadomes."-d");  
-      }
-
-
-
-      $insertControl=$conn->enviarquery("INSERT INTO detalle_control(imc,fecha_control,id_hijo,peso,estatura,idestado,idactividad,tmb,mes_control) VALUES($imc,'".$hoy."',$numhijo,$peso,$estatura,$estado,$actividad,$tmb,'".$fechanueva."')");
-
-
-      }
-      public function ExistUser2($correo,$codValidacion){
-            $classconex= new conex();
             $conn=$classconex->conec();
-            $datosClient=[];
-            $datosClient=$conn->enviarquery("SELECT count(*) FROM usuario WHERE correo=".$correo." and correo=".$codValidacion."");
-                  if (datosClient.lengt>0) {
-                        $insertControl=$conn->enviarquery("UPDATE usuario SET idestado= WHERE correo=");
-                  } else {
-                       echo   "correo o codigo invalido";
-                  }
-                  
+            $hoy = date("Y-m-d");
+            $mesfecha=date("n");
+            $aniactual=date("Y");
+            $avasadomes=$mesfecha+1;
+
+            if ($mesfecha==12) {
+            $sumaanio=$aniactual+1;
+            $restames=$mesfecha-11;
+            $fechanueva=date("Y-".$restames."-"+$sumaanio);
+
+            }else{
+            $fechanueva=date("Y-".$avasadomes."-d");  
             }
+
+
+
+            $insertControl=$conn->enviarquery("INSERT INTO detalle_control(imc,fecha_control,id_hijo,peso,estatura,idestado,idactividad,tmb,mes_control) VALUES($imc,'".$hoy."',$numhijo,$peso,$estatura,$estado,$actividad,$tmb,'".$fechanueva."')");
+
+
       }
-
-
-
-
-
-
-
+      
+      }
 
 ?>
