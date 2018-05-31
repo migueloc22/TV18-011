@@ -35,7 +35,7 @@
 
                 //Content
                 $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = 'Mac';
+                $mail->Subject = 'Apptivos Código de activación';
                 $mail->Body    = $html;
                 //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
