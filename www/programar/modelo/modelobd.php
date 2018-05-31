@@ -50,7 +50,7 @@ class Usuario{
                         $classconex= new conex();
                         $conn=$classconex->conec();
                         $datosfoto=$conn->enviarquery("UPDATE usuario  set idestado=1 WHERE Id_usuario=".$iduser);
-                        echo $iduser;
+                        echo "Usuario activo";
                         return $datosfoto;
                         if (!$datosfoto) {
                         echo $this->error="error";

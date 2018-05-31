@@ -1,25 +1,52 @@
 <ion-view view-title="Recuperar cuenta">
 
-    <ion-content>
-  
-      <ion-list>
-        
-        <div id="recuperaar" class="list ">
-  
-          <label class="item item-input item-stacked-label   datalabel">
-            <span class="input-label">correo22</span>
-            <input type="text" placeholder="@gmail.com">
-          </label>
-          <label class="item item-input item-stacked-label   datalabel">
-            <span class="input-label">correo22</span>
-            <input type="text" placeholder="codigo">
-          </label>
-          <button id="btnValidar_VlUSer" class="button button-full button-energized ">
-            <i class="ion-ios-cloud"></i>
-            Enviar
-          </button>
-  
-        </div>
-      </ion-list>
-    </ion-content>
-  </ion-view>
+  <ion-content>
+
+    <ion-list>
+
+      <div id="recuperaar" class="list ">
+
+        <label class="item item-input item-stacked-label   datalabel">
+          <span class="input-label">Correo</span>
+          <input type="text" id="email_VlUSer" placeholder="@gmail.com">
+          <br>
+          <p></p>
+        </label>
+        <label class="item item-input item-stacked-label   datalabel">
+          <span class="input-label">Codigo</span>
+          <input type="text" id="codigo_VlUSer" placeholder="codigo">
+          <br>
+          <p></p>
+        </label>
+        <button id="btnValidar_VlUSer" class="button button-full button-energized ">
+          <i class="ion-ios-cloud"></i>
+          Enviar
+        </button>
+        <script>
+          $("#btnValidar_VlUSer").on('click', function () {
+            var correo = $("#email_VlUSer").val();
+            var codigo = $("#codigo_VlUSer").val();
+            vltxtCorreo_validarUser();
+            vltxtCodigo_validarUser();
+            if (vltxtCodigo_validarUser() && vltxtCorreo_validarUser()) {
+              $.ajax({
+                url: urlServe,
+                data: {
+                  action: 'validarUser',
+                  correo: correo,
+                  codigo: codigo,
+                },
+                type: 'POST',
+                success: function (output) {
+                  alert(output);
+
+                }
+              });
+            }
+
+          })
+        </script>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

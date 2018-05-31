@@ -1,18 +1,17 @@
 <ion-view view-title="Recuperar cuenta">
-
   <ion-content>
-
     <ion-list>
-      <div style="width: 20%; height: 20%;">
+      <div style="width: 20%; height: 20%; margin: 0 auto">
         <img src="img/logo.ico" class="col col-20 col-offset-3">
       </div>
       <div id="recuperaar" class="list ">
 
         <label class="item item-input item-stacked-label   datalabel">
           <span class="input-label">correo</span>
-          <input type="text" placeholder="@gmail.com">
+          <input type="text" id="email_recuperar" placeholder="@gmail.com">
+          <br><p></p>
         </label>
-        <button class="button button-full button-energized ">
+        <button class="button button-full button-energized " id="btnEnviar_recuperar">
           <i class="ion-ios-cloud"></i>
           Enviar
         </button>
@@ -21,3 +20,26 @@
     </ion-list>
   </ion-content>
 </ion-view>
+<script>
+  var ipServe = "http://10.73.52.108/GitHub/TV18-011/";
+  var ruta = "www/programar/controlador/Clogin.php";
+  var urlServe = ipServe + ruta;
+  $("#btnEnviar_recuperar").on('click', function () {
+    var correo = $("#email_recuperar").val();
+    if (vltxtCorreo_recuperar()) {
+      $.ajax({
+        url: urlServe,
+        data: {
+          action: 'recuperarPass',
+          correo:correo,
+        },
+        type: 'POST',
+        success: function (output) {
+          console.log(output);
+
+        }
+      });
+    }
+
+  });
+</script>

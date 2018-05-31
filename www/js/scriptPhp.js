@@ -1,5 +1,5 @@
   //inicio
-  var ipServe = "http://10.73.52.102/GitHub/TV18-011/";
+  var ipServe = "http://10.73.52.108/GitHub/TV18-011/";
   var ruta = "www/programar/controlador/Clogin.php";
   var urlServe = ipServe + ruta;
   $("[name=sesion]").on('click', function () {

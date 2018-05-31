@@ -2,7 +2,92 @@ var RegExpNum = /^[0-9]$/;
 var RegExpTelefono = /^\d{9}$/;
 var RegExpEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 var RegExpLetras = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
+var RegExpNvSeguridad=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
+//*
+//*
+//Inicio vista recuperar
+function vltxtCorreo_recuperar() {
+    var caja = $("#email_recuperar");
+    if (caja.val() == "" || caja.val() == null || caja.val().length == 0) {
+        $("#email_recuperar").parent().children("p").css({
+            "color": "red"
+        });
+        $("#email_recuperar").parent().children("p").text("campo vacio").show();
+        return false;
+    } else if (!RegExpEmail.test(caja.val())) {
+        $("#email_recuperar").parent().children("p").css({
+            "color": "red"
+        });
+        $("#email_recuperar").parent().children("p").text("Solo Correo").show();
+        return false;
 
+    } else {
+
+        $("#email_recuperar").parent().children("p").css({
+            "color": "green"
+        });
+        $("#email_recuperar").parent().children("p").text("campo valido").show();
+        return true;
+    }
+}
+
+//final vista recuperar
+//*
+//*
+//*
+//*
+//Inicio vista validarUser
+function vltxtCorreo_validarUser() {
+    var caja = $("#email_VlUSer");
+    if (caja.val() == "" || caja.val() == null || caja.val().length == 0) {
+        $("#email_VlUSer").parent().children("p").css({
+            "color": "red"
+        });
+        $("#email_VlUSer").parent().children("p").text("campo vacio").show();
+        return false;
+    } else if (!RegExpEmail.test(caja.val())) {
+        $("#email_VlUSer").parent().children("p").css({
+            "color": "red"
+        });
+        $("#email_VlUSer").parent().children("p").text("Solo Correo").show();
+        return false;
+
+    } else {
+
+        $("#email_VlUSer").parent().children("p").css({
+            "color": "green"
+        });
+        $("#email_VlUSer").parent().children("p").text("campo valido").show();
+        return true;
+    }
+}
+function vltxtCodigo_validarUser() {
+    var caja = $("#codigo_VlUSer");
+    if (caja.val() == "" || caja.val() == null || caja.val().length == 0) {
+        $("#codigo_VlUSer").parent().children("p").css({
+            "color": "red"
+        });
+        $("#codigo_VlUSer").parent().children("p").text("Campo vacio").show();
+        return false;
+    // } else if (!RegExpNum.test(caja.val())) {
+    //     $("#codigo_VlUSer").parent().children("p").css({
+    //         "color": "red"
+    //     });
+        $("#codigo_VlUSer").parent().children("p").text("Solo Numeros").show();
+        return false;
+
+    } else {
+
+        $("#codigo_VlUSer").parent().children("p").css({
+            "color": "green"
+        });
+        $("#codigo_VlUSer").parent().children("p").text("Campo valido").show();
+        return true;
+    }
+}
+//final vista recuperar
+//*
+//*
 function vltxtCorreo() {
     var caja = $("#emailR");
     if (caja.val() == "" || caja.val() == null || caja.val().length == 0) {

@@ -38,7 +38,7 @@
         
         }
     }
-    session_start();
+    
     function updateregistro(){
     $id= $_SESSION["Idusuario"];
     $nombre= $_POST["nombre"];
