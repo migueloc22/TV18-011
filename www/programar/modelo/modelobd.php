@@ -1,6 +1,7 @@
 <?php 
 @session_start();
 require "../conexion/conexion.php";
+require "../util/csCorreo.php";
 class Usuario{
 
       public function registroUser($n,$a,$c,$p,$cod_active,$inactivo,$rol){
@@ -63,11 +64,31 @@ class Usuario{
                   echo "Correo electrónico invalido";
              }      
       }
-      public function Cambiosuario_est($iduser,$idestado){
-            
-      
-      
-            
+      public function recuperarCodigoUser($correo){
+            $respuesta=false;
+            $link = mysqli_connect("localhost", "root", "", "apptivos");
+            $query="SELECT * FROM usuario WHERE correo='".$correo."'" ;
+            $result = mysqli_query($link, $query);
+            if ($row =  mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                  $csCorreo= new csCorreo();
+                  if ($csCorreo->correo($row['correo'],'codigo es '.$row['cod_active'],'mensaje enviado')) {
+                        $iduser=$row['Id_usuario'] ;
+                        $classconex= new conex();
+                        $conn=$classconex->conec();
+                        $datosfoto=$conn->enviarquery("UPDATE usuario  set idestado=2 WHERE Id_usuario=".$iduser);
+                        return $datosfoto;
+                        if (!$datosfoto) {
+                        echo $this->error="error";
+                  }
+                  } else {
+                        # code...
+                  }
+                  
+                  
+             }
+             else{
+                  echo "Correo electrónico invalido";
+             }      
       }
 
       public function fotousuario($iduser,$foto){

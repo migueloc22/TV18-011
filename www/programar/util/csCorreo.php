@@ -4,23 +4,22 @@
    include 'src/Exception.php';
    include 'src/PHPMailer.php';
    include 'src/SMTP.php';
-   include 'src/OAuth.php';
     class csCorreo
     {
         
         function correo($correo , $html ,$msn)
         {
-            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+            $mail = new PHPMailer(false);                              // Passing `true` enables exceptions
             try {
                 //Server settings
                 $mail->SMTPDebug = 2;                                 // Enable verbose debug output
                 $mail->isSMTP();                                      // Set mailer to use SMTP
                 $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-                $mail->SMTPAuth = false;                               // Enable SMTP authentication
+                $mail->SMTPAuth = true;                               // Enable SMTP authentication
                 $mail->Username = 'migueloc22@gmail.com';                 // SMTP username
                 $mail->Password = 'mac1120375190';                           // SMTP password
-                $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-                $mail->Port = 25;                                    // TCP port to connect to
+                $mail->SMTPSecure = 'TLS';                            // Enable TLS encryption, `ssl` also accepted
+                $mail->Port = 587;                                    // TCP port to connect to
 
                 //Recipients
                 $mail->setFrom('migueloc22@gmail.com');
@@ -42,8 +41,10 @@
 
                 $mail->send();
                 echo $msn;
+                return true;
             } catch (Exception $e) {
                 echo 'El Mensaje no fue enviado Error: ', $mail->ErrorInfo;
+                return false;
             }
         }
     }

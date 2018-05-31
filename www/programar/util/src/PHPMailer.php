@@ -1511,9 +1511,10 @@ class PHPMailer
             if ($this->exceptions) {
                 throw $exc;
             }
+            return false;
         }
 
-        return false;
+        
     }
 
     /**

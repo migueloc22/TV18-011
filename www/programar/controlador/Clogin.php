@@ -1,7 +1,6 @@
 <?php 
 header("Access-Control-Allow-Origin: *");
 require "../modelo/modelobd.php";
-require "../util/csCorreo.php";
 //require "Cemail.php";
 if(isset($_POST['action'])) {
     $action = $_POST['action'];
