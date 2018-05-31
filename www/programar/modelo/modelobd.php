@@ -56,11 +56,11 @@ class Usuario{
                         }
                   }
                   else{
-                   echo "Codigo no valido";
+                   echo "Código  invalido";
                   } 
              }
              else{
-                  echo "Npo encuentra correo electronico";
+                  echo "Correo electrónico invalido";
              }      
       }
       public function Cambiosuario_est($iduser,$idestado){
