@@ -24,7 +24,7 @@
 
 	}
 	function datosUsuarios(){
-	session_start();
+	
 	$correoI = $_POST['correoI'];
 	$passwordI = $_POST['passwordI'];
 	$VerficarDatos= new Usuario();
@@ -42,13 +42,13 @@
 		case '1':
 	if ($rol=='2') {
 	$_SESSION["nombre"]=$nombre;
-	$_SESSION["Idusuario"]=$id;
+	84=$id;
 	echo "2";
 	}
 
 	if ($rol=='3') {
 		$_SESSION["nombre"]=$nombre;
-	$_SESSION["Idusuario"]=$id;
+	84=$id;
 		echo "3";
 	}
 			break;
@@ -80,7 +80,7 @@
 		if ($Rdato=="") {
 			//$email->enviar($correoR,$cod_active);
 
-			$RegistrarDatos->registroUser("$nombreR","$apellidoR","$correoR",md5("$passwordR"),"$cod_active","$inactivo","$rol");
+			$RegistrarDatos->registroUser("$nombreR","$apellidoR","'"."$correoR"."'",md5("$passwordR"),"$cod_active","$inactivo","$rol");
 			$csCorreo= new csCorreo();
 			$csCorreo->correo($correoR,'El codigo es  '.$cod_active,"hola");
 			echo (json_encode("La cuenta fue creada con exito, a su correo llego un mensaje para activar la cuenta "));
