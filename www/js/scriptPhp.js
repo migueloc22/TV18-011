@@ -1,5 +1,5 @@
   //inicio
-  var ipServe = "http://10.73.52.198/GitHub/TV18-011/";
+  var ipServe = "http://10.73.52.235/GitHub/TV18-011/";
   var ruta = "www/programar/controlador/Clogin.php";
   var urlServe = ipServe + ruta;
   $("[name=sesion]").on('click', function () {
@@ -21,7 +21,7 @@
         },
         type: 'POST',
         success: function (salida) {
-          alert(salida);
+          // alert(salida);
           switch (salida) {
             case "2":
               window.location.href = "programar/vista/usuario.html";
@@ -48,7 +48,6 @@
   datos();
 
   function datos() {
-
     var correo = localStorage.getItem("correo");
     var password = localStorage.getItem("password");
     if ((correo != undefined) && (password != undefined)) {

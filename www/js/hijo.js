@@ -1,5 +1,7 @@
 datoshijo();
-
+var ipServe = "http://10.73.52.235/GitHub/TV18-011/";
+var ruta = "www/programar/controlador/Clogin.php";
+var urlServe = ipServe + ruta;
 function datoshijo() {
   var fecha = new Date();
   var resul = 0;
@@ -10,7 +12,7 @@ function datoshijo() {
   var diahoy = parseInt(fecha.getDate());
   var id = localStorage.getItem("idhijos");
   $.ajax({
-      url: 'http://192.168.1.20/www/programar/controlador/Clogin.php',
+      url: urlServe ,
       type: 'POST',
       data: {
         action: 'ConsultaAvatart',
@@ -52,7 +54,7 @@ actividad();
 function actividad() {
   var acty = "";
   $.ajax({
-      url: 'http://192.168.1.20/www/programar/controlador/Clogin.php',
+      url: urlServe ,
       type: 'POST',
       data: {
         action: 'actividad'
@@ -328,7 +330,7 @@ function calcularzscore(peso, edad, estatura,
 
       if (confirm("El estado de salud es: " + estados + " si esta seguro de peso " + peso + "kg y la" + " talla " + estatura + " cm son correctos clic en aceptar")) {
         $.ajax({
-          url: 'http://192.168.1.20/www/programar/controlador/Clogin.php',
+          url: urlServe ,
           data: {
             action: 'CrearDtosResult',
             imc: "'" + caculado_imc + "'",

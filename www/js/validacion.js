@@ -619,3 +619,81 @@ function vldescrip_perfilespecialistat() {
 }
 
 //Fin validaciones de la vista perfilespecialista
+//inicio validaciones de la vista control
+function vlestatura_control() {
+    var caja = $("#estaturahijo");
+    if (caja.val() == "" || caja.val() == null || caja.val().length == 0) {
+        $("#estaturahijo").parent().children("p").css({
+            "color": "red"
+        });
+        $("#estaturahijo").parent().children("p").text("campo vacio").show();
+        return false;
+    } else if (!RegExpNum.test(caja.val())) {
+        $("#estaturahijo").parent().children("p").css({
+            "color": "red"
+        });
+        $("#estaturahijo").parent().children("p").text("Solo Letras").show();
+        return false;
+
+    } else {
+
+        $("#estaturahijo").parent().children("p").css({
+            "color": "green"
+        });
+        $("#estaturahijo").parent().children("p").text("campo valido").show();
+        return true;
+    }
+}
+function vlestatura_control() {
+    var caja = $("#pesokghijo");
+    if (caja.val() == "" || caja.val() == null || caja.val().length == 0) {
+        $("#pesokghijo").parent().children("p").css({
+            "color": "red"
+        });
+        $("#pesokghijo").parent().children("p").text("campo vacio").show();
+        return false;
+    } else if (!RegExpNum.test(caja.val())) {
+        $("#pesokghijo").parent().children("p").css({
+            "color": "red"
+        });
+        $("#pesokghijo").parent().children("p").text("Solo Letras").show();
+        return false;
+
+    } else {
+
+        $("#pesokghijo").parent().children("p").css({
+            "color": "green"
+        });
+        $("#pesokghijo").parent().children("p").text("campo valido").show();
+        return true;
+    }
+}
+//Fin validaciones de la vista control
+//inicio validaciones de la vista crearnoticia
+function vlestatura_crearnoticia() {
+    var caja = $("#descrip_crnoticia");
+    if (caja.val() == "" || caja.val() == null || caja.val().length == 0) {
+        $("#descrip_crnoticia").parent().children("p").css({
+            "color": "red"
+        });
+        $("#descrip_crnoticia").parent().children("p").text("campo vacio").show();
+        return false;
+    } else if (!RegExpLetras.test(caja.val())) {
+        $("#descrip_crnoticia").parent().children("p").css({
+            "color": "red"
+        });
+        $("#descrip_crnoticia").parent().children("p").text("Solo Letras").show();
+        return false;
+
+    } else {
+
+        $("#descrip_crnoticia").parent().children("p").css({
+            "color": "green"
+        });
+        $("#descrip_crnoticia").parent().children("p").text("campo valido").show();
+        return true;
+    }
+}
+
+//Fin validaciones de la vista crearnoticia
+// 

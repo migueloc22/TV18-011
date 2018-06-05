@@ -41,14 +41,16 @@
 	switch ($estado) {
 		case '1':
 	if ($rol=='2') {
+		
 	$_SESSION["nombre"]=$nombre;
-	84=$id;
+	$_SESSION["Idusuario"]=$id;
 	echo "2";
 	}
 
 	if ($rol=='3') {
+		 
 		$_SESSION["nombre"]=$nombre;
-	84=$id;
+		$_SESSION["Idusuario"]=$id;
 		echo "3";
 	}
 			break;
