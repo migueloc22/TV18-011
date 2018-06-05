@@ -25,45 +25,52 @@
 	}
 	function datosUsuarios(){
 	
-	$correoI = $_POST['correoI'];
-	$passwordI = $_POST['passwordI'];
-	$VerficarDatos= new Usuario();
-	$usuarioI=$VerficarDatos->login("$correoI",md5("$passwordI"));
-	if ($usuarioI!="") {
-	foreach ($usuarioI as  $tabla) {
-	$estado= $tabla["idestado"];
-	$rol= $tabla["idrol"];
-	$nombre=$tabla["nombre"];
-	if ($rol=="") {
-		echo "false2";
-	}
-	$id=$tabla["Id_usuario"];
-	switch ($estado) {
-		case '1':
-	if ($rol=='2') {
+		$correoI = $_POST['correoI'];
+		$passwordI = $_POST['passwordI'];
+		$VerficarDatos= new Usuario();
+		$usuarioI=$VerficarDatos->login("$correoI",md5("$passwordI"));
+		if ($usuarioI!="") {
+			echo (json_encode($usuarioI));
+		} else {
+			echo "1";
+		}
 		
-	$_SESSION["nombre"]=$nombre;
-	$_SESSION["Idusuario"]=$id;
-	echo "2";
-	}
+		
+		// if ($usuarioI!="") {
+		// foreach ($usuarioI as  $tabla) {
+		// $estado= $tabla["idestado"];
+		// $rol= $tabla["idrol"];
+		// $nombre=$tabla["nombre"];
+		// if ($rol=="") {
+		// 	echo "false2";
+		// }
+		// $id=$tabla["Id_usuario"];
+		// switch ($estado) {
+		// 	case '1':
+		// if ($rol=='2') {
+			
+		// $_SESSION["nombre"]=$nombre;
+		// $_SESSION["Idusuario"]=$id;
+		// echo "2";
+		// }
 
-	if ($rol=='3') {
-		 
-		$_SESSION["nombre"]=$nombre;
-		$_SESSION["Idusuario"]=$id;
-		echo "3";
-	}
-			break;
-			case '2':
-	echo 'false1';
-			break;
-		default:
-			break;
-	}
-	}
-	}else{
-		echo "false2";
-	}
+		// if ($rol=='3') {
+			
+		// 	$_SESSION["nombre"]=$nombre;
+		// 	$_SESSION["Idusuario"]=$id;
+		// 	echo "3";
+		// }
+		// 		break;
+		// 		case '2':
+		// echo 'false1';
+		// 		break;
+		// 	default:
+		// 		break;
+		// }
+		// }
+		// }else{
+		// 	echo "false2";
+		// }
 	}
 
 	function registrarUsuarios(){

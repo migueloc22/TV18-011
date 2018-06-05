@@ -7,21 +7,49 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
+      "PACKAGE_NAME": "apptivos.co"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
+      "PACKAGE_NAME": "apptivos.co"
     },
     "cordova-plugin-firebase": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
-    "cordova-plugin-network-information": {
       "PACKAGE_NAME": "apptivos.co"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-contacts": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-device-motion": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-fcm": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "apptivos.co"
+    }
+  }
 }

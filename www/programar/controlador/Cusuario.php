@@ -156,8 +156,6 @@
 
 
     }
-
-
     function CrearsessionHijo(){
         $id = $_SESSION["Idusuario"];
         $nombre=$_POST['nombre'];
