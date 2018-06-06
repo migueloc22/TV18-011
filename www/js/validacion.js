@@ -697,3 +697,15 @@ function vlestatura_crearnoticia() {
 
 //Fin validaciones de la vista crearnoticia
 // 
+
+//inicio de validacion de usuario
+function vlIdUser() {
+    if (sessionStorage.getItem("objUser")) {
+        var objUser = JSON.parse(sessionStorage.getItem("objUser"));
+        return object.Id_usuario;
+        
+      } else {
+        window.location.href = "puerta1.html#/tab/cuenta"
+        console.log("no objeto");
+      }
+}

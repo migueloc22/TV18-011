@@ -1,17 +1,19 @@
 //var socket=io.connect('http://190.67.248.85:8080', { 'forceNew': true });
-var ipServe = "http://10.73.52.235/GitHub/TV18-011/";
+var ipServe = "http://10.73.52.147/GitHub/TV18-011/";
 var ruta = "www/programar/controlador/Clogin.php";
 var urlServe = ipServe + ruta;
 noticias();
 var nrws = "";
 
 function noticias() {
-
+  var id_User = vlIdUser();
   $.ajax({
       url: urlServe,
       type: 'POST',
       data: {
-        action: 'noticias'
+        action: 'noticias',
+        id_User:id_User
+
       }
     })
     .done(function (data) {
@@ -43,11 +45,12 @@ function noticias() {
 
 
 $("#updateregistro").on('click', function () {
-  var ipServe = "http://10.73.52.235/GitHub/TV18-011/";
+  var ipServe = "http://10.73.52.147/GitHub/TV18-011/";
   var ruta = "www/programar/controlador/Clogin.php";
   var urlServe = ipServe + ruta;
   var nombreperfilpadre = $("#nombreperfilpadre").val();
   var apellidoperfilpadre = $("#apellidoperfilpadre").val();
+  var id_User = vlIdUser();
   vlApellido_account();
   vlNombre_account();
   if (vlApellido_account() && vlNombre_account()) {
@@ -56,7 +59,8 @@ $("#updateregistro").on('click', function () {
       data: {
         action: 'updateregistro',
         nombre: "'" + nombreperfilpadre + "'",
-        apellido: "'" + apellidoperfilpadre + "'"
+        apellido: "'" + apellidoperfilpadre + "'",
+        id_User: id_User
       },
       type: 'POST',
     }).done(function (data) {

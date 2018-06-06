@@ -2,6 +2,7 @@ noticias();
 
 function noticias() {
   var nrws = "";
+  var id_User=vlIdUser();
   $.ajax({
       url: urlServe,
       type: 'POST',
@@ -41,11 +42,13 @@ function listhijos() {
   var imghijos = "";
   var nombrehijo = "";
   var datoshijo = "";
+  var id_User=vlIdUser();
   $.ajax({
       url: urlServe,
       type: 'POST',
       data: {
-        action: 'listahijos'
+        action: 'listahijos',
+        id_User:id_User
       }
     })
     .done(function (data) {

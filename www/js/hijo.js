@@ -1,5 +1,5 @@
 datoshijo();
-var ipServe = "http://10.73.52.235/GitHub/TV18-011/";
+var ipServe = "http://10.73.52.147/GitHub/TV18-011/";
 var ruta = "www/programar/controlador/Clogin.php";
 var urlServe = ipServe + ruta;
 function datoshijo() {

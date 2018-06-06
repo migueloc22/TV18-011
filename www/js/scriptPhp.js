@@ -1,5 +1,5 @@
   //inicio
-  var ipServe = "http://10.73.52.235/GitHub/TV18-011/";
+  var ipServe = "http://10.73.52.147/GitHub/TV18-011/";
   var ruta = "www/programar/controlador/Clogin.php";
   var urlServe = ipServe + ruta;
   $("[name=sesion]").on('click', function () {
@@ -54,12 +54,10 @@
             };
             sessionStorage.setItem("objUser", JSON.stringify(objUser));
             switch (objUser.idestado) {
-              case "2":
-                window.location.href = "programar/vista/usuario.html";
+              case "1":
+               
                 break;
-              case "3":
-                window.location.href = "programar/vista/especialista.html";
-                break;
+              
               default:
                 console.log("active su cuenta");
                 break;
@@ -112,8 +110,17 @@
     // }
     if (sessionStorage.getItem("objUser")) {
       var objUser = JSON.parse(sessionStorage.getItem("objUser"));
-      window.location.href = "puerta1.html#/tab/cuenta"
-      console.log("hay objeto");
+      switch (objUser.idestado) {
+        case "2":
+          window.location.href = "programar/vista/usuario.html";
+          break;
+        case "3":
+          window.location.href = "programar/vista/especialista.html";
+          break;
+        default:
+          console.log("active su cuenta");
+          break;
+      }
     } else {
       window.location.href = "puerta1.html#/tab/cuenta"
       console.log("no objeto");

@@ -40,43 +40,49 @@
     }
     
     function updateregistro(){
-        $id= $_SESSION["Idusuario"];
+        
+        // $id= $_SESSION["Idusuario"];
+        $id_User= $_POST["id_User"];
         $nombre= $_POST["nombre"];
         $apellido= $_POST["apellido"];
         $perfilmodificar=new Usuario();
-        $fperfil=$perfilmodificar->updateperfil($id,$nombre,$apellido);
+        $fperfil=$perfilmodificar->updateperfil($id_User,$nombre,$apellido);
         echo ($fperfil);
     }
 
     function fotoperfil(){
-        $id= $_SESSION["Idusuario"];
+        // $id= $_SESSION["Idusuario"];
+        $id_User= $_POST["id_User"];
         $foto= $_POST["foto"];
         $fotoperfilda=new Usuario();
-        $fotos=$fotoperfilda->fotousuario($id,$foto);
+        $fotos=$fotoperfilda->fotousuario($id_User,$foto);
         echo ($fotos);
     }
 
 
     function listahijos(){
-        $id= $_SESSION["Idusuario"];
+        // $id= $_SESSION["Idusuario"];
+        $id_User= $_POST["id_User"];
         $claseda=new Usuario();
-        $usuarioshijos=$claseda->listadehijos($id);
+        $usuarioshijos=$claseda->listadehijos($id_User);
         echo json_encode($usuarioshijos);
     }
 
     function noticias(){
-        $id= $_SESSION["Idusuario"];
+       // $id= $_SESSION["Idusuario"];
+        $id_User= $_POST["id_User"];
         $clasedat=new Usuario();
-        $usuarioschat=$clasedat->noticiausuario($id);
+        $usuarioschat=$clasedat->noticiausuario($id_User);
         echo json_encode($usuarioschat);
     }
 
 
 
     function chatusuarios(){
-        $id= $_SESSION["Idusuario"];
+        // $id= $_SESSION["Idusuario"];
+        $id_User= $_POST["id_User"];
         $clasedat=new Usuario();
-        $usuarioschat=$clasedat->especialistasusuarios($id);
+        $usuarioschat=$clasedat->especialistasusuarios($id_User);
         echo json_encode($usuarioschat);
     }
 
@@ -116,7 +122,8 @@
     }
     function sessionavatar(){
         $nombre= $_SESSION["nombre"];
-        $id = $_SESSION["Idusuario"];
+        // $id= $_SESSION["Idusuario"];
+        $id_User= $_POST["id_User"];
         $clase=new Usuario();
 
         if ($id!="") {
@@ -135,16 +142,18 @@
 
 
     function sessionUsuario(){
-        $id = $_SESSION["Idusuario"];
+        // $id= $_SESSION["Idusuario"];
+        $id_User= $_POST["id_User"];
         $clase=new Usuario();
 
-        $usuario=$clase->CuentaUsuario($id);
+        $usuario=$clase->CuentaUsuario($id_User);
 
         echo json_encode($usuario);
 
     }
     function sessionHijo(){
-        $id = $_SESSION["Idusuario"];
+        // $id= $_SESSION["Idusuario"];
+        $id_User= $_POST["id_User"];
         $clase=new Usuario();
         $usuario=$clase->hijos($id);
         if ($usuario!="") {
@@ -157,7 +166,8 @@
 
     }
     function CrearsessionHijo(){
-        $id = $_SESSION["Idusuario"];
+        // $id= $_SESSION["Idusuario"];
+        $id_User= $_POST["id_User"];
         $nombre=$_POST['nombre'];
         $apellido=$_POST['apellido'];
         //$colegio=$_POST['colegio'];
@@ -167,7 +177,7 @@
         $ciudad = $_POST["ciudad"];
         $idhijos = $_POST["idhijos"];
         $clase=new Usuario();
-        $idhijo=$clase->consultaridhijos($nombre,$apellido,$sexo,$fecha,$id_avatar,$id,$ciudad,$idhijos);
+        $idhijo=$clase->consultaridhijos($nombre,$apellido,$sexo,$fecha,$id_avatar,$id_User,$ciudad,$idhijos);
         echo $idhijo;
         /*
         foreach ($idhijo as $tabla) {
