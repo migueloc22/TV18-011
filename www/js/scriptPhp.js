@@ -1,5 +1,5 @@
   //inicio
-  var ipServe = "http://10.73.52.147/GitHub/TV18-011/";
+  var ipServe = "http://10.73.52.183/GitHub/TV18-011/";
   var ruta = "www/programar/controlador/Clogin.php";
   var urlServe = ipServe + ruta;
   $("[name=sesion]").on('click', function () {
@@ -55,9 +55,14 @@
             sessionStorage.setItem("objUser", JSON.stringify(objUser));
             switch (objUser.idestado) {
               case "1":
-               
+                if (objUser.idrol == 1) {
+                } else if (objUser.idrol == 2) {
+                  window.location.href = "programar/vista/usuario.html";
+                } else if (objUser.idrol == 3) {
+                  window.location.href = "programar/vista/especialista.html";
+                }
                 break;
-              
+
               default:
                 console.log("active su cuenta");
                 break;
@@ -111,12 +116,17 @@
     if (sessionStorage.getItem("objUser")) {
       var objUser = JSON.parse(sessionStorage.getItem("objUser"));
       switch (objUser.idestado) {
-        case "2":
-          window.location.href = "programar/vista/usuario.html";
+        case "1":
+          if (objUser.idrol == 1) {
+
+          } else if (objUser.idrol == 2) {
+            window.location.href = "programar/vista/usuario.html";
+          } else if (objUser.idrol == 3)
+           {
+            window.location.href = "programar/vista/especialista.html";
+          }
           break;
-        case "3":
-          window.location.href = "programar/vista/especialista.html";
-          break;
+
         default:
           console.log("active su cuenta");
           break;

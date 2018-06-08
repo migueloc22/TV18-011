@@ -702,7 +702,18 @@ function vlestatura_crearnoticia() {
 function vlIdUser() {
     if (sessionStorage.getItem("objUser")) {
         var objUser = JSON.parse(sessionStorage.getItem("objUser"));
-        return object.Id_usuario;
+        console.log(objUser.Id_usuario);
+        return objUser.Id_usuario;
+        
+      } else {
+        window.location.href = "puerta1.html#/tab/cuenta"
+        console.log("no objeto");
+      }
+}
+function vlNombreUser() {
+    if (sessionStorage.getItem("objUser")) {
+        var objUser = JSON.parse(sessionStorage.getItem("objUser"));
+        return objUser.nombre;
         
       } else {
         window.location.href = "puerta1.html#/tab/cuenta"

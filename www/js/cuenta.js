@@ -1,5 +1,5 @@
 //var socket=io.connect('http://190.67.248.85:8080', { 'forceNew': true });
-var ipServe = "http://10.73.52.147/GitHub/TV18-011/";
+var ipServe = "http://10.73.52.183/GitHub/TV18-011/";
 var ruta = "www/programar/controlador/Clogin.php";
 var urlServe = ipServe + ruta;
 noticias();
@@ -45,9 +45,6 @@ function noticias() {
 
 
 $("#updateregistro").on('click', function () {
-  var ipServe = "http://10.73.52.147/GitHub/TV18-011/";
-  var ruta = "www/programar/controlador/Clogin.php";
-  var urlServe = ipServe + ruta;
   var nombreperfilpadre = $("#nombreperfilpadre").val();
   var apellidoperfilpadre = $("#apellidoperfilpadre").val();
   var id_User = vlIdUser();
@@ -75,12 +72,13 @@ chatuser();
 var chatuser = "";
 
 function chatuser() {
-
+  var id_User = vlIdUser();
   $.ajax({
       url: urlServe,
       type: 'POST',
       data: {
-        action: 'chatusuarios'
+        action: 'chatusuarios',
+        id_User:id_User
       }
     })
     .done(function (data) {
@@ -117,15 +115,17 @@ var numhijo = 0;
 var idhijos = 0;
 
 function iduserchat(a) {
+  var id_User = vlIdUser();
   $.ajax({
     url: urlServe,
     data: {
       action: 'sessionchat',
-      iduser: "'" + a + "'"
+      iduser: "'" + a + "'",
+      id_User:id_User
     },
     type: 'POST',
   }).done(function (data) {
-
+    console.log(data);
 
   });
 
@@ -135,11 +135,16 @@ var present = "";
 var avataresnuevos = "";
 
 function consultas() {
+  
+  var nombre=vlNombreUser();
+  var id_User = vlIdUser();
   $.ajax({
       url: urlServe,
       type: 'POST',
       data: {
-        action: 'sessionavatar'
+        action: 'sessionavatar',
+        nombre:nombre,
+        id_User:id_User
       }
     })
     .done(function (data) {
@@ -160,14 +165,15 @@ function consultas() {
 datousuario();
 
 function datousuario() {
-
+  var id_User = vlIdUser();
   var imguser = document.getElementById('smallImage');
 
   $.ajax({
       url: urlServe,
       type: 'POST',
       data: {
-        action: 'sessionUsuario'
+        action: 'sessionUsuario',
+        id_User:id_User
       }
     })
     .done(function (data) {
@@ -185,6 +191,9 @@ var id_avatar = 0;
 var presentacion2 = "";
 
 function myfunction(e) {
+
+  var nombre=vlNombreUser();
+  var id_User = vlIdUser();
   var valornum = 0;
   if (e == "primr7") {
     idhijos = 0;
@@ -197,11 +206,13 @@ function myfunction(e) {
       url: urlServe,
       type: 'POST',
       data: {
-        action: 'sessionavatar'
+        action: 'sessionavatar',
+              nombre:nombre,
+              id_User:id_User
       }
     })
     .done(function (data) {
-
+      console.log(data);
       var datos = JSON.parse(data);
       $.each(datos.avatarnueno, function (fila, valor) {
         if (e == valor.idavatar || valornum == valor.idavatar) {
@@ -223,6 +234,7 @@ function myfunction(e) {
 hijouser();
 
 function hijoinsert(nombre, apellido, sexo, fecha, ciudad) {
+  var id_User = vlIdUser();
   $.ajax({
     url: urlServe,
     data: {
@@ -233,7 +245,8 @@ function hijoinsert(nombre, apellido, sexo, fecha, ciudad) {
       fecha: "'" + fecha + "'",
       id_avatar: "'" + id_avatar + "'",
       ciudad: "'" + ciudad + "'",
-      idhijos: "'" + idhijos + "'"
+      idhijos: "'" + idhijos + "'",
+      id_User:id_User
     },
     type: 'POST',
   }).done(function (data) {
@@ -251,14 +264,17 @@ function hijouser() {
   var imghijos = "";
   var nombrehijo = "";
   var datoshijo = "";
+  var id_User = vlIdUser();
   $.ajax({
       url: urlServe,
       type: 'POST',
       data: {
-        action: 'sessionHijo'
+        action: 'sessionHijo',
+        id_User:id_User
       }
     })
     .done(function (data) {
+      console.log(data);
       var datos = JSON.parse(data);
 
       //$("#presentacion").html(present);
@@ -361,6 +377,7 @@ function mescontrol() {
     },
     type: 'POST',
   }).done(function (data) {
+    console.log(data);
     if (data == 'false') {
       window.location.href = "#/tab/control";
 
@@ -393,7 +410,7 @@ function mescontrol() {
 
 //perfilhijo();
 function perfilhijo() {
-
+  var id_User = vlIdUser();
   var id = localStorage.getItem("idhijos");
   idcontroles(id);
   var presentacion2 = "";
@@ -402,9 +419,11 @@ function perfilhijo() {
     url: urlServe,
     type: 'POST',
     data: {
-      action: 'sessionHijo'
+      action: 'sessionHijo',
+      id_User:id_User
     }
   }).done(function (data) {
+    console.log(data);
     var datos = JSON.parse(data);
     $.each(datos, function (fila, valor) {
       if (valor.id_hijo == id) {
@@ -479,15 +498,17 @@ function onPhotoDataSuccess(imageData) {
   //tomar foto y guardadar
 
   var imagen = "data:image/jpeg;base64," + imageData;
-
+  var id_User = vlIdUser();
   $.ajax({
     url: urlServe,
     data: {
       action: 'fotoperfil',
-      foto: "'" + imagen + "'"
+      foto: "'" + imagen + "'",
+      id_User:id_User
     },
     type: 'POST',
   }).done(function (data) {
+    console.log(data);
     if (data != "") {
       alert(data);
     }
@@ -519,14 +540,18 @@ function onPhotoURISuccess(imageURI) {
   getFileContentAsBase64(imageURI, function (base64Image) {
     //window.open(base64Image);
     largeImage.src = base64Image;
+    var id_User = vlIdUser();
     $.ajax({
       url: urlServe,
       data: {
         action: 'fotoperfil',
-        foto: "'" + base64Image + "'"
+        foto: "'" + base64Image + "'",
+        id_User:id_User
+
       },
       type: 'POST',
     }).done(function (data) {
+      console.log(data);
       if (data != "") {
         alert(data);
       }

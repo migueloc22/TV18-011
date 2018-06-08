@@ -106,7 +106,7 @@
         $imc=$clase->consulDatAvatar($id);
         echo json_encode($imc);
     }
-
+    //nota ver la ssesion
     function Consultaimctmb(){
         $id=$_POST['id'];
         $_SESSION["ident"]=$id;
@@ -121,17 +121,18 @@
         echo json_encode($imc);
     }
     function sessionavatar(){
-        $nombre= $_SESSION["nombre"];
+        // $nombre= $_SESSION["nombre"];
+        $nombre= $_POST["nombre"];
         // $id= $_SESSION["Idusuario"];
         $id_User= $_POST["id_User"];
         $clase=new Usuario();
 
-        if ($id!="") {
+        if ($id_User!="") {
 
         $presentAvatar=$clase->PresentacionAvatar();
         $avatarnueno=$clase->AvataresSeleccionar();
 
-        $datos = array('nombre' =>  $nombre, 'id' => $id,'presentavatar'=>$presentAvatar,'avatarnueno'=>$avatarnueno);
+        $datos = array('nombre' =>  $nombre, 'id' => $id_User,'presentavatar'=>$presentAvatar,'avatarnueno'=>$avatarnueno);
 
         echo json_encode($datos);
         }else{

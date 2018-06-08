@@ -1,4 +1,4 @@
-var ipServe = "http://10.73.52.147/GitHub/TV18-011/";
+var ipServe = "http://10.73.52.183/GitHub/TV18-011/";
 var ruta = "www/programar/controlador/Clogin.php";
 var urlServe = ipServe + ruta;
 angular.module('starter.controllers', [])
@@ -161,7 +161,8 @@ angular.module('starter.controllers', [])
       function consultas() {
         alert(urlServe);
         var avataresnuevos = "";
-
+        var nombre=vlNombreUser();
+        var id_User = vlIdUser();
         $("#nombrehijo1").val("");
         $("#apellidohijo2").val("");
         $("#colegiohijo").val("");
@@ -172,7 +173,9 @@ angular.module('starter.controllers', [])
             url: urlServe,
             type: 'POST',
             data: {
-              action: 'sessionavatar'
+              action: 'sessionavatar',
+              nombre:nombre,
+              id_User:id_User
             }
 
           })

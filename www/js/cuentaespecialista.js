@@ -2,7 +2,7 @@ noticias();
 
 function noticias() {
   var nrws = "";
-  var id_User=vlIdUser();
+  var id_User = vlIdUser();
   $.ajax({
       url: urlServe,
       type: 'POST',
@@ -42,13 +42,13 @@ function listhijos() {
   var imghijos = "";
   var nombrehijo = "";
   var datoshijo = "";
-  var id_User=vlIdUser();
+  var id_User = vlIdUser();
   $.ajax({
       url: urlServe,
       type: 'POST',
       data: {
         action: 'listahijos',
-        id_User:id_User
+        id_User: id_User
       }
     })
     .done(function (data) {
@@ -85,14 +85,15 @@ function idhijopadre(id) {
 datousuario();
 
 function datousuario() {
-
+  var id_User = vlIdUser();
   var imageda = document.getElementById('smallImage');
   var fotoespecialista = document.getElementById('fotoespecialista');
   $.ajax({
       url: urlServe,
       type: 'POST',
       data: {
-        action: 'sessionUsuario'
+        action: 'sessionUsuario',
+        id_User: id_User
       }
     })
     .done(function (data) {
@@ -114,14 +115,15 @@ function datousuario() {
 
 
 function datosnuevos() {
-
+  var id_User = vlIdUser();
   var hoy = new Date();
   var fotoespecialista = document.getElementById('fotoespecialista');
   $.ajax({
       url: urlServe,
       type: 'POST',
       data: {
-        action: 'sessionUsuario'
+        action: 'sessionUsuario',
+        id_User:id_User
       }
     })
     .done(function (data) {
@@ -170,12 +172,13 @@ function onPhotoDataSuccess(imageData) {
   //tomar foto y guardadar
 
   var imagen = "data:image/jpeg;base64," + imageData;
-
+  var id_User = vlIdUser();
   $.ajax({
     url: urlServe,
     data: {
       action: 'fotoperfil',
-      foto: "'" + imagen + "'"
+      foto: "'" + imagen + "'",
+      id_User:id_User
     },
     type: 'POST',
   }).done(function (data) {
@@ -257,11 +260,13 @@ function onPhotoURISuccess(imageURI) {
   getFileContentAsBase64(imageURI, function (base64Image) {
     //window.open(base64Image);
     largeImage.src = base64Image;
+    var id_User = vlIdUser();
     $.ajax({
       url: urlServe,
       data: {
         action: 'fotoperfil',
-        foto: "'" + base64Image + "'"
+        foto: "'" + base64Image + "'",
+        id_User:id_User
       },
       type: 'POST',
     }).done(function (data) {
