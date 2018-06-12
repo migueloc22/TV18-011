@@ -644,7 +644,7 @@ function vlestatura_control() {
         return true;
     }
 }
-function vlestatura_control() {
+function vlpesoHijo_control() {
     var caja = $("#pesokghijo");
     if (caja.val() == "" || caja.val() == null || caja.val().length == 0) {
         $("#pesokghijo").parent().children("p").css({
@@ -706,7 +706,7 @@ function vlIdUser() {
         return objUser.Id_usuario;
         
       } else {
-        window.location.href = "puerta1.html#/tab/cuenta"
+        window.location.href = "../../puerta1.html";
         console.log("no objeto");
       }
 }
@@ -716,7 +716,7 @@ function vlNombreUser() {
         return objUser.nombre;
         
       } else {
-        window.location.href = "puerta1.html#/tab/cuenta"
+        window.location.href = "../../puerta1.html";
         console.log("no objeto");
       }
 }

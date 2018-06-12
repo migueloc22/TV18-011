@@ -36,7 +36,6 @@ var app = {
             }, function (error) {
                 console.error(error);
             });
-            alert("hola");
             window.FirebasePlugin.subscribe("apptivosesdetodos");
         });
     },

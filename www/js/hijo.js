@@ -12,13 +12,13 @@ function datoshijo() {
   var diahoy = parseInt(fecha.getDate());
   var id = localStorage.getItem("idhijos");
   $.ajax({
-      url: urlServe ,
-      type: 'POST',
-      data: {
-        action: 'ConsultaAvatart',
-        id: "'" + id + "'"
-      },
-    })
+    url: urlServe,
+    type: 'POST',
+    data: {
+      action: 'ConsultaAvatart',
+      id: "'" + id + "'"
+    },
+  })
     .done(function (data) {
       var datos = JSON.parse(data);
       $.each(datos, function (fila, valor) {
@@ -54,12 +54,12 @@ actividad();
 function actividad() {
   var acty = "";
   $.ajax({
-      url: urlServe ,
-      type: 'POST',
-      data: {
-        action: 'actividad'
-      }
-    })
+    url: urlServe,
+    type: 'POST',
+    data: {
+      action: 'actividad'
+    }
+  })
     .done(function (data) {
       var datos = JSON.parse(data);
       acty += "<select id='ejerciciohijooption'>";
@@ -96,31 +96,31 @@ var cm = $("#estaturahijo").val();
 var peso = $("#pesokghijo").val();
 */
 $("#calculoimc").on('click', function () {
+  vlestatura_control();
+  vlpesoHijo_control();
+  if (vlestatura_control() && vlpesoHijo_control()) {
+    var peso = $("#pesokghijo").val();
+    var talla = $("#estaturahijo").val();
+    if (mesesvida == 0) {
+      meses = 0;
+    }
+    if (mesesvida >= 24 && mesesvida <= 216) {
+      d3.csv("http://192.168.1.20/pesoedad/validaciontabla.csv", function (tabla) {
+        for (var i = 0; i < tabla.length; i++) {
+          if (mesesvida >= tabla[i].mayor && mesesvida <= tabla[i].menor && tabla[i].genero == sexo) {
+            grafica = tabla[i].categoria;
+          }
 
-  var peso = $("#pesokghijo").val();
-  var talla = $("#estaturahijo").val();
-
-
-
-  if (mesesvida == 0) {
-    meses = 0;
-  }
-  if (mesesvida >= 24 && mesesvida <= 216) {
-    d3.csv("http://192.168.1.20/pesoedad/validaciontabla.csv", function (tabla) {
-      for (var i = 0; i < tabla.length; i++) {
-        if (mesesvida >= tabla[i].mayor && mesesvida <= tabla[i].menor && tabla[i].genero == sexo) {
-          grafica = tabla[i].categoria;
         }
-
-      }
-      calcularzscore(peso, mesesvida, talla, sexo, grafica);
-    });
+        calcularzscore(peso, mesesvida, talla, sexo, grafica);
+      });
 
 
 
-  } else {
-    $("#mensaje").text("debe ser mayor de 2 años y menor de 18");
+    } else {
+      $("#mensaje").text("debe ser mayor de 2 años y menor de 18");
 
+    }
   }
 
 });
@@ -251,7 +251,6 @@ function calcularzscore(peso, edad, estatura,
 
 
     function calculotmb(acty) {
-
       d3.csv("http://192.168.1.20/pesoedad/tmb.csv", function (datosecuacion) {
         var ecuacion = 0;
         var resultado = 0; ///
@@ -330,7 +329,7 @@ function calcularzscore(peso, edad, estatura,
 
       if (confirm("El estado de salud es: " + estados + " si esta seguro de peso " + peso + "kg y la" + " talla " + estatura + " cm son correctos clic en aceptar")) {
         $.ajax({
-          url: urlServe ,
+          url: urlServe,
           data: {
             action: 'CrearDtosResult',
             imc: "'" + caculado_imc + "'",
