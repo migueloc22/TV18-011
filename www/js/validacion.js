@@ -1,4 +1,4 @@
-var RegExpNum = /^[0-9]$/;
+var RegExpNum = /^([0-9])*$/;
 var RegExpTelefono = /^\d{9}$/;
 var RegExpEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 var RegExpLetras = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
@@ -311,7 +311,7 @@ function vlFecha_hijo() {
         });
         $("#fechahijo").parent().children("p").text("campo vacio").show();
         return false;
-    } else if (edad > 18 && edad < 2) {
+    } else if ( edad < 2 || edad > 18 ) {
         $("#fechahijo").parent().children("p").css({
             "color": "red"
         });
@@ -323,7 +323,7 @@ function vlFecha_hijo() {
         $("#fechahijo").parent().children("p").css({
             "color": "green"
         });
-        $("#fechahijo").parent().children("p").text("campo valido").show();
+        $("#fechahijo").parent().children("p").text("campo valido ").show();
         return true;
     }
 }

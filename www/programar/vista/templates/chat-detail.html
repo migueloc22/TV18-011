@@ -1,17 +1,15 @@
-
-
 <ion-view view-title="controles">
-        <ion-nav-buttons side="left" >
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-        <a href="#/tab/dash" class="button button-icon  ion-chevron-left">
-        </a>
-      </ion-nav-buttons>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+    <a href="#/tab/dash" class="button button-icon  ion-chevron-left">
+    </a>
+  </ion-nav-buttons>
 
-        <ion-nav-buttons side="right"  id="buttonid">
-        <a href="#" class="button button-icon  icon ion-person" ng-click="login()" onclick="perfilhijo()">
-        </a>
-      </ion-nav-buttons>
+  <ion-nav-buttons side="right" id="buttonid">
+    <a href="#" class="button button-icon  icon ion-person" ng-click="login()" onclick="perfilhijo()">
+    </a>
+  </ion-nav-buttons>
 
   <ion-content class="padding">
 
@@ -19,205 +17,206 @@
 
     <div id="chart_div"></div>
 
-<canvas id="line-chart" width="100%" height="100%"></canvas>
+    <canvas id="line-chart" width="100%" height="100%"></canvas>
 
-<center>
-   <div id="logo">
+    <center>
+      <div id="logo">
 
-   </div>   
-    <strong id="nameda"></strong>
-</center>
-<p>Control de peso</p>
+      </div>
+      <strong id="nameda"></strong>
+    </center>
+    <p>Control de peso</p>
 
-<div class="list" >
+    <div class="list">
 
-    <a class="item item-thumbnail-left" href="#" onclick="mescontrol()">
-      <img src="../../img/pesoideal.gif">
-      <h2>control del mes</h2>
-      <p id="meshoy"></p>
-    </a>
+      <a class="item item-thumbnail-left" href="#" onclick="mescontrol()">
+        <img src="../../img/pesoideal.gif">
+        <h2>control del mes</h2>
+        <p id="meshoy"></p>
+      </a>
 
-</div>
+    </div>
 
 
-<p>alimentacion</p>
-<div class="list" >
+    <p>alimentacion</p>
+    <div class="list">
 
-    <a class="item item-thumbnail-left" href="#">
-      <img src="../../img/salud.gif">
-      <h2>control del dia</h2>
-      <p>ESTAMOS EN DESARROLLO</p>
-    </a>
+      <a class="item item-thumbnail-left" href="#">
+        <img src="../../img/salud.gif">
+        <h2>control del dia</h2>
+        <p>ESTAMOS EN DESARROLLO</p>
+      </a>
 
-</div>
+    </div>
 
-<p>sugerencias doctor</p>
-<div class="list" >
+    <p>sugerencias doctor</p>
+    <div class="list">
 
-    <a class="item item-thumbnail-left" href="#">
-      <img src="../../img/doctor.gif">
-      <h2>buzon de mensajes</h2>
-      <p>ESTAMOS EN DESARROLLO</p>
-    </a>
+      <a class="item item-thumbnail-left" href="#">
+        <img src="../../img/doctor.gif">
+        <h2>buzon de mensajes</h2>
+        <p>ESTAMOS EN DESARROLLO</p>
+      </a>
 
-</div>
+    </div>
 
 
   </ion-content>
 </ion-view>
 <script type="text/javascript">
-  
+  var ipServe = "http://10.73.52.201/GitHub/TV18-011/";
+  var ruta = "www/programar/controlador/Clogin.php";
+  var urlServe = ipServe + ruta;
+  graficarimc();
 
-graficarimc();
-function graficarimc(){
-//valor.imc.split(",");
+  function graficarimc() {
+    //valor.imc.split(",");
+    var meses = new Array("", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
+      "Octubre", "Noviembre", "Diciembre");
+    var obdobeso = new Array(0, "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
+      "Octubre", "Noviembre", "Diciembre");
+    var obdbajopeso = new Array(0, "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+      "Septiembre", "Octubre", "Noviembre", "Diciembre");
+    var obdnormal = new Array(0, "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
+      "Octubre", "Noviembre", "Diciembre");
+    var fechaobeso = "";
+    var fechabajopeso = "";
+    var fechanormal = "";
+    var datosimcobeso = "";
+    var datosimcdelgado = "";
+    var datosimcnormal = "";
+    var stringmes = "";
+    var mesimc = "";
+    var f = new Date();
+    var mesdehoy = f.getMonth() + 1;
+    $("#meshoy").text(meses[mesdehoy]);
 
-
-var meses = new Array ("","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-var obdobeso = new Array (0,"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-var obdbajopeso = new Array (0,"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-var obdnormal = new Array (0,"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-var fechaobeso="";
-var fechabajopeso="";
-var fechanormal="";
-   var datosimcobeso="";
-      var datosimcdelgado="";
-      var datosimcnormal="";
-var stringmes="";
-    var mesimc="";
-var f = new Date();
-var mesdehoy=f.getMonth() +1;
-$("#meshoy").text(meses[mesdehoy]);
-
-    $.ajax({ url: 'http://192.168.1.20/www/programar/controlador/Clogin.php',
-         data: {action: 'Consulgrafica'},
-         type: 'POST',
-  }).done(function(data) {
-  var datos = JSON.parse(data);
-   $.each(datos,function(fila,valor){
-var array_fechasol = valor.fecha_control.split("-");
-var mes = parseInt(array_fechasol[1]); 
-
-
- if (valor.estado=="Obesidad leve" || valor.estado=="Obesidad morbida" || valor.estado=="Obesidad media") {
-       datosimcobeso+= valor.imc+" ";
-       fechaobeso+=mes+" ";
-
-
- }
-  if (valor.estado=="Delgadez severa" || valor.estado=="Delgadez moderada" || valor.estado=="delgadez leve" ) {
- datosimcdelgado+= valor.imc+" ";
-fechabajopeso+=mes+" ";
+    $.ajax({
+      url: urlServe,
+      data: {
+        action: 'Consulgrafica'
+      },
+      type: 'POST',
+    }).done(function (data) {
+      var datos = JSON.parse(data);
+      $.each(datos, function (fila, valor) {
+        var array_fechasol = valor.fecha_control.split("-");
+        var mes = parseInt(array_fechasol[1]);
 
 
- }
-   if (valor.estado=="peso normal") {
- datosimcnormal+= valor.imc+" ";
-fechanormal+=mes+" ";
-
- }
+        if (valor.estado == "Obesidad leve" || valor.estado == "Obesidad morbida" || valor.estado ==
+          "Obesidad media") {
+          datosimcobeso += valor.imc + " ";
+          fechaobeso += mes + " ";
 
 
-   });
+        }
+        if (valor.estado == "Delgadez severa" || valor.estado == "Delgadez moderada" || valor.estado ==
+          "delgadez leve") {
+          datosimcdelgado += valor.imc + " ";
+          fechabajopeso += mes + " ";
 
 
-//delgado
-  var arraydelgado=datosimcdelgado.split(" ");
-var resultdelgado = arraydelgado.slice(0,-1);
-resultdelgado.splice(0,0,0);
-  var arrayfechabajopeso=fechabajopeso.split(" ");
-  var resultbajopeso = arrayfechabajopeso.slice(0,-1);
-  resultbajopeso.splice(0,0,0);
+        }
+        if (valor.estado == "peso normal") {
+          datosimcnormal += valor.imc + " ";
+          fechanormal += mes + " ";
 
-for (var i = 1; i < obdbajopeso.length; i++) {
-if (resultbajopeso[i]) {
- obdbajopeso.splice(resultbajopeso[i],1, resultdelgado[i]);
-}
-if (meses[i]==obdbajopeso[i]) {
-obdbajopeso.splice(i,1, 0);
-}
-}
+        }
 
 
-//delgado
-
-//resultado obeso
- var arrayobeso=datosimcobeso.split(" ");
-  var fecjaobeso=fechaobeso.split(" ");
-   var resultadofechaobeso = fecjaobeso.slice(0,-1);
- var resultadoimcobeso = arrayobeso.slice(0,-1);
- resultadoimcobeso.splice(0,0,0);
- resultadofechaobeso.splice(0,0,0);
-for (var i = 1; i < obdobeso.length; i++) {
-if (resultadofechaobeso[i]) {
- obdobeso.splice(resultadofechaobeso[i],1, resultadoimcobeso[i]);
-}
-if (meses[i]==obdobeso[i]) {
-obdobeso.splice(i,1, 0);
-}
-}
-//resultado obeso
-
-//resultado normal
- var arraynormal=datosimcnormal.split(" ");
-var resultnormal = arraynormal.slice(0,-1);
-resultnormal.splice(0,0,0);
-var arrayfechanormal =fechanormal.split(" ");
-var resulfechanormal = arrayfechanormal.slice(0,-1);
-
-  resulfechanormal.splice(0,0,0);
+      });
 
 
+      //delgado
+      var arraydelgado = datosimcdelgado.split(" ");
+      var resultdelgado = arraydelgado.slice(0, -1);
+      resultdelgado.splice(0, 0, 0);
+      var arrayfechabajopeso = fechabajopeso.split(" ");
+      var resultbajopeso = arrayfechabajopeso.slice(0, -1);
+      resultbajopeso.splice(0, 0, 0);
 
-for (var i = 1; i < obdnormal.length; i++) {
-if (resulfechanormal[i]) {
- obdnormal.splice(resulfechanormal[i],1, resultnormal[i]);
-}
-if (meses[i]==obdnormal[i]) {
-obdnormal.splice(i,1, 0);
-}
-}
-//resultado normal
-
-
-
-
-
-    new Chart(document.getElementById("line-chart"), {
-  type: 'line',
-  data: {
-    labels: meses,
-    datasets: [{ 
-        data: obdobeso,
-        label: "obeso",
-        borderColor: "#EC7063",
-        fill: false
-      }, { 
-        data: obdnormal,
-        label: "normal",
-        borderColor: "#7DCEA0",
-        fill: false
-      }, { 
-        data: obdbajopeso,
-        label: "bajo de peso",
-        borderColor: "#F7DC6F",
-        fill: false
+      for (var i = 1; i < obdbajopeso.length; i++) {
+        if (resultbajopeso[i]) {
+          obdbajopeso.splice(resultbajopeso[i], 1, resultdelgado[i]);
+        }
+        if (meses[i] == obdbajopeso[i]) {
+          obdbajopeso.splice(i, 1, 0);
+        }
       }
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'estado de salud'
-    }
+
+
+      //delgado
+
+      //resultado obeso
+      var arrayobeso = datosimcobeso.split(" ");
+      var fecjaobeso = fechaobeso.split(" ");
+      var resultadofechaobeso = fecjaobeso.slice(0, -1);
+      var resultadoimcobeso = arrayobeso.slice(0, -1);
+      resultadoimcobeso.splice(0, 0, 0);
+      resultadofechaobeso.splice(0, 0, 0);
+      for (var i = 1; i < obdobeso.length; i++) {
+        if (resultadofechaobeso[i]) {
+          obdobeso.splice(resultadofechaobeso[i], 1, resultadoimcobeso[i]);
+        }
+        if (meses[i] == obdobeso[i]) {
+          obdobeso.splice(i, 1, 0);
+        }
+      }
+      //resultado obeso
+
+      //resultado normal
+      var arraynormal = datosimcnormal.split(" ");
+      var resultnormal = arraynormal.slice(0, -1);
+      resultnormal.splice(0, 0, 0);
+      var arrayfechanormal = fechanormal.split(" ");
+      var resulfechanormal = arrayfechanormal.slice(0, -1);
+
+      resulfechanormal.splice(0, 0, 0);
+
+
+
+      for (var i = 1; i < obdnormal.length; i++) {
+        if (resulfechanormal[i]) {
+          obdnormal.splice(resulfechanormal[i], 1, resultnormal[i]);
+        }
+        if (meses[i] == obdnormal[i]) {
+          obdnormal.splice(i, 1, 0);
+        }
+      }
+      //resultado normal
+      new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+          labels: meses,
+          datasets: [{
+            data: obdobeso,
+            label: "obeso",
+            borderColor: "#EC7063",
+            fill: false
+          }, {
+            data: obdnormal,
+            label: "normal",
+            borderColor: "#7DCEA0",
+            fill: false
+          }, {
+            data: obdbajopeso,
+            label: "bajo de peso",
+            borderColor: "#F7DC6F",
+            fill: false
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'estado de salud'
+          }
+        }
+
+      });
+    });
+
   }
-
-});
-});
-
-}
-
 </script>
 
 <script type="text/javascript" src="../../js/cuenta.js"></script>
-

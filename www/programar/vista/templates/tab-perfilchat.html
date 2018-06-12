@@ -130,6 +130,9 @@ id="list_userlocal"
 
 <script type="text/javascript" src="../../js/cuenta.js"></script>
 <script type="text/javascript">
+var ipServe = "http://10.73.52.201/GitHub/TV18-011/";
+var ruta = "www/programar/controlador/Clogin.php";
+var urlServe = ipServe + ruta;
   $('.botonF1').hover(function(){
   $('.btn').addClass('animacionVer');
 })
@@ -146,7 +149,7 @@ function dat(){
   var chatuser="";
 
 
-         $.ajax({ url: 'http://192.168.1.20/www/programar/controlador/Clogin.php',
+         $.ajax({ url: urlServe,
          type: 'POST',
            data: {action: 'chatusuarios'}
      })

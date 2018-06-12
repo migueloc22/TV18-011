@@ -63,7 +63,6 @@ function actividad() {
     .done(function (data) {
       var datos = JSON.parse(data);
       acty += "<select id='ejerciciohijooption'>";
-      acty += "<option></option>";
       $.each(datos, function (fila, valor) {
         acty += "<option>" + valor.n_actividad + "</option>";
 

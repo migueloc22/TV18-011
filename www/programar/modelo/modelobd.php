@@ -71,13 +71,13 @@ class Usuario{
             $result = mysqli_query($link, $query);
             if ($row =  mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                   $csCorreo= new csCorreo();
-                  if ($csCorreo->correo($row['correo'],'codigo es '.$row['cod_active'],'mensaje enviado')) {
+                  if ($csCorreo->correo($row['correo'],'La contraseña es '.$row['password'],'mensaje enviado')) {
                         $iduser=$row['Id_usuario'] ;
                         $classconex= new conex();
                         $conn=$classconex->conec();
-                        $datosfoto=$conn->enviarquery("UPDATE usuario  set idestado=2 WHERE Id_usuario=".$iduser);
-                        return $datosfoto;
-                        if (!$datosfoto) {
+                        //$datos=$conn->enviarquery("UPDATE usuario  set idestado=2 WHERE Id_usuario=".$iduser);
+                        return $datos;
+                        if (!$datos) {
                         echo $this->error="error";
                   }
                   } else {

@@ -1,203 +1,212 @@
 <!DOCTYPE html>
 
 <html ng-app="ionicApp">
-    <head> 
-       <meta charset="utf-8">
+
+<head>
+  <meta charset="utf-8">
 
 
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-    
-    <!--<link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+  <!--<link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
     <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
   -->
 
-    <link rel="stylesheet" type="text/css" href="../../../ionic/css/ionic.css">
-   <script src="../../../ionic/js/ionic.bundle2.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../../ionic/css/ionic.css">
+  <script src="../../../ionic/js/ionic.bundle2.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="../../../css/index.css">
-                <link rel="stylesheet" type="text/css" href="../../../ionicons/css/ionicons.css">
+  <link rel="stylesheet" type="text/css" href="../../../css/index.css">
+  <link rel="stylesheet" type="text/css" href="../../../ionicons/css/ionicons.css">
   <script src="http://161.18.55.38:8080/socket.io/socket.io.js"></script>
-        <script src="../../../js/jquery-3.2.1.min.js"></script>
-        <title>Hello World</title>
-    </head>
-   <body>
+  <script src="../../../js/jquery-3.2.1.min.js"></script>
+  <title>Hello World</title>
+</head>
+
+<body>
 
   <html ng-app="ionicApp">
 
   <head>
- 
+
 
   </head>
 
   <body ng-controller="Messages">
     <ion-pane class="messaging-view">
-    <ion-header-bar class="bar-energized ">
-    	 
+      <ion-header-bar class="bar-energized ">
+
         <a href="../usuario.html#/tab/perfilchat" class="button button-icon  ion-chevron-left" menu-toggle="left">
         </a>
 
-      <h1 class="title">apptivos Chat</h1>
-    </ion-header-bar>
+        <h1 class="title">apptivos Chat</h1>
+      </ion-header-bar>
 
-    <ion-content class="content-stable"
-                 on-swipe-left="hideTime = false"
-                 on-swipe-right="hideTime = true" style="background-color: rgba(255, 193, 7, 0.28)">
+      <ion-content class="content-stable" on-swipe-left="hideTime = false" on-swipe-right="hideTime = true" style="background-color: rgba(255, 193, 7, 0.28)">
 
 
-<div id="datos"></div>
+        <div id="datos"></div>
 
 
 
 
 
-    </ion-content>
+      </ion-content>
 
-    <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
-      <label class="item-input-wrapper">
-        <input type="text" placeholder="Type your message" on-return="sendMessage(); closeKeyboard()" ng-model="data.message" on-focus="inputUp()" on-blur="inputDown()" />
-      </label>
-      <button class="button button-clear" ng-click="sendMessage()">
-        Send
-      </button>
-    </ion-footer-bar>
-  </ion-pane>
+      <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="Type your message" on-return="sendMessage(); closeKeyboard()" ng-model="data.message" on-focus="inputUp()"
+            on-blur="inputDown()" />
+        </label>
+        <button class="button button-clear" ng-click="sendMessage()">
+          Send
+        </button>
+      </ion-footer-bar>
+    </ion-pane>
   </body>
-</html>
-  
-  </body>
+
+  </html>
+
+</body>
 <script type="text/javascript" src="../../../js/cuenta.js"></script>
 
- <script type="text/javascript">
+<script type="text/javascript">
+  var ipServe = "http://10.73.52.201/GitHub/TV18-011/";
+  var ruta = "www/programar/controlador/Clogin.php";
+  var urlServe = ipServe + ruta;
 
-   angular.module('ionicApp', ['ionic'])
+  angular.module('ionicApp', ['ionic'])
 
-// All this does is allow the message
-// to be sent when you tap return
-.directive('input', function($timeout) {
-  return {
-    restrict: 'E',
-    scope: {
-      'returnClose': '=',
-      'onReturn': '&',
-      'onFocus': '&',
-      'onBlur': '&'
-    },
-    link: function(scope, element, attr) {
-      element.bind('focus', function(e) {
-        if (scope.onFocus) {
-          $timeout(function() {
-            scope.onFocus();
+    // All this does is allow the message
+    // to be sent when you tap return
+    .directive('input', function ($timeout) {
+      return {
+        restrict: 'E',
+        scope: {
+          'returnClose': '=',
+          'onReturn': '&',
+          'onFocus': '&',
+          'onBlur': '&'
+        },
+        link: function (scope, element, attr) {
+          element.bind('focus', function (e) {
+            if (scope.onFocus) {
+              $timeout(function () {
+                scope.onFocus();
+              });
+            }
+          });
+          element.bind('blur', function (e) {
+            if (scope.onBlur) {
+              $timeout(function () {
+                scope.onBlur();
+              });
+            }
+          });
+          element.bind('keydown', function (e) {
+            if (e.which == 13) {
+              if (scope.returnClose) element[0].blur();
+              if (scope.onReturn) {
+                $timeout(function () {
+                  scope.onReturn();
+                });
+              }
+            }
           });
         }
-      });
-      element.bind('blur', function(e) {
-        if (scope.onBlur) {
-          $timeout(function() {
-            scope.onBlur();
-          });
-        }
-      });
-      element.bind('keydown', function(e) {
-        if (e.which == 13) {
-          if (scope.returnClose) element[0].blur();
-          if (scope.onReturn) {
-            $timeout(function() {
-              scope.onReturn();
+      }
+    })
+
+
+    .controller('Messages', function ($scope, $timeout, $ionicScrollDelegate) {
+
+      $scope.hideTime = true;
+
+      var alternate,
+        isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
+
+
+
+      $scope.sendMessage = function () {
+        alternate = !alternate;
+
+        var d = new Date();
+        d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+
+
+
+
+        socket.emit('mensaje', $scope.data.message + " " + d);
+
+
+        $.ajax({
+            url: urlServe,
+            type: 'POST',
+            data: {
+              action: 'usuariolocal'
+            }
+          })
+          .done(function (data) {
+            var datos = JSON.parse(data);
+            $.each(datos, function (fila, valor) {
+              console.log("" + valor.Id_usuario + "");
+              localStorage.setItem("" + valor.Id_usuario + "", JSON.stringify(valor));
+
+
+
             });
-          }
-        }
+
+          });
+
+
+        /*
+
+            $scope.messages.push({
+              userId: alternate ? '12345' : '54321',
+              text: $scope.data.message +" "+d,  
+            });
+
+            delete $scope.data.message;
+            $ionicScrollDelegate.scrollBottom(true);
+        */
+      };
+
+      var arreglo;
+      var htmls = "";
+      socket.on('respuesta', function (r) {
+        arreglo = [{
+          'mensaje': r
+        }];
+        htmls += "<br><br><span class='nue'>" + arreglo[0].mensaje + "</span>";
+        $("#datos").html(htmls);
+        delete arreglo[0].mensaje;
+        $ionicScrollDelegate.scrollBottom(true);
       });
-    }
-  }
-})
-
-
-.controller('Messages', function($scope, $timeout, $ionicScrollDelegate) {
-
-  $scope.hideTime = true;
-
-  var alternate,
-    isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
-  
-
-
-  $scope.sendMessage = function() {
-    alternate = !alternate;
-
-    var d = new Date();
-  d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
 
 
 
+      $scope.inputUp = function () {
+        if (isIOS) $scope.data.keyboardHeight = 216;
+        $timeout(function () {
+          $ionicScrollDelegate.scrollBottom(true);
+        }, 300);
 
- socket.emit('mensaje',$scope.data.message+" "+d);
+      };
 
+      $scope.inputDown = function () {
+        if (isIOS) $scope.data.keyboardHeight = 0;
+        $ionicScrollDelegate.resize();
+      };
 
-         $.ajax({ url: 'http://192.168.1.20/www/programar/controlador/Clogin.php',
-         type: 'POST',
-           data: {action: 'usuariolocal'}
-     })
-.done(function(data) {
-  var datos = JSON.parse(data);
-       $.each(datos,function(fila,valor){
-    console.log(""+valor.Id_usuario+"");
-        localStorage.setItem(""+valor.Id_usuario+"",  JSON.stringify(valor));
-
-
-
-       });
-
-     });
+      $scope.closeKeyboard = function () {
+        // cordova.plugins.Keyboard.close();
+      };
 
 
-/*
+      $scope.data = {};
+      $scope.myId = '12345';
+      $scope.messages = [];
 
-    $scope.messages.push({
-      userId: alternate ? '12345' : '54321',
-      text: $scope.data.message +" "+d,  
     });
+</script>
 
-    delete $scope.data.message;
-    $ionicScrollDelegate.scrollBottom(true);
-*/
-  };
-
-var arreglo;
-var htmls="";
-       socket.on('respuesta', function(r){
-arreglo=[{'mensaje':r}];
-htmls+="<br><br><span class='nue'>"+arreglo[0].mensaje+"</span>";
-$("#datos").html(htmls);
-delete arreglo[0].mensaje;
-  $ionicScrollDelegate.scrollBottom(true);
-});
-
-
-
-  $scope.inputUp = function() {
-    if (isIOS) $scope.data.keyboardHeight = 216;
-    $timeout(function() {
-      $ionicScrollDelegate.scrollBottom(true);
-    }, 300);
-
-  };
-
-  $scope.inputDown = function() {
-    if (isIOS) $scope.data.keyboardHeight = 0;
-    $ionicScrollDelegate.resize();
-  };
-
-  $scope.closeKeyboard = function() {
-    // cordova.plugins.Keyboard.close();
-  };
-
-
-  $scope.data = {};
-  $scope.myId = '12345';
-  $scope.messages = [];
-
-});
-
-
- </script>
 </html>

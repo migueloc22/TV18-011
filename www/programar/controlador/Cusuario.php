@@ -156,7 +156,7 @@
         // $id= $_SESSION["Idusuario"];
         $id_User= $_POST["id_User"];
         $clase=new Usuario();
-        $usuario=$clase->hijos($id);
+        $usuario=$clase->hijos($id_User);
         if ($usuario!="") {
             echo json_encode($usuario);
         }else{

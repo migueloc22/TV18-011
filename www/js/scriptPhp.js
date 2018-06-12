@@ -55,8 +55,7 @@
             sessionStorage.setItem("objUser", JSON.stringify(objUser));
             switch (objUser.idestado) {
               case "1":
-                if (objUser.idrol == 1) {
-                } else if (objUser.idrol == 2) {
+                if (objUser.idrol == 1) {} else if (objUser.idrol == 2) {
                   window.location.href = "programar/vista/usuario.html";
                 } else if (objUser.idrol == 3) {
                   window.location.href = "programar/vista/especialista.html";
@@ -64,10 +63,12 @@
                 break;
 
               default:
+              $('#lbRepuesta').html("active su cuenta")
                 console.log("active su cuenta");
                 break;
             }
           } else {
+            $('#lbRepuesta').html("No existe Usuario")
             console.log("No existe Usuario");
           }
         }
@@ -121,8 +122,7 @@
 
           } else if (objUser.idrol == 2) {
             window.location.href = "programar/vista/usuario.html";
-          } else if (objUser.idrol == 3)
-           {
+          } else if (objUser.idrol == 3) {
             window.location.href = "programar/vista/especialista.html";
           }
           break;
