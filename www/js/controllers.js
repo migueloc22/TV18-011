@@ -1,4 +1,4 @@
-var ipServe = "http://10.73.52.183/GitHub/TV18-011/";
+var ipServe = "http://10.73.52.201/GitHub/TV18-011/";
 var ruta = "www/programar/controlador/Clogin.php";
 var urlServe = ipServe + ruta;
 angular.module('starter.controllers', [])
@@ -159,7 +159,7 @@ angular.module('starter.controllers', [])
       consultas();
 
       function consultas() {
-        alert(urlServe);
+        //alert(urlServe);
         var avataresnuevos = "";
         var nombre=vlNombreUser();
         var id_User = vlIdUser();
