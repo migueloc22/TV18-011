@@ -108,16 +108,17 @@
     }
     //nota ver la ssesion
     function Consultaimctmb(){
-        $id=$_POST['id'];
-        $_SESSION["ident"]=$id;
+        $id_hijo=$_POST['id_hijo'];
+        //$_SESSION["ident"]=$id;
         $clase=new Usuario();
-        $imc=$clase->consulDatImc($id);
+        $imc=$clase->consulDatImc($id_hijo);
         echo json_encode($imc);
     }
     function Consulgrafica(){
-        $id=$_SESSION["ident"];
+        $id_hijo=$_POST['id_hijo'];
+        //$id=$_SESSION["ident"];
         $clase=new Usuario();
-        $imc=$clase->consulDatImcgrafica($id);
+        $imc=$clase->consulDatImcgrafica($id_hijo);
         echo json_encode($imc);
     }
     function sessionavatar(){

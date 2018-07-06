@@ -90,11 +90,12 @@
     var f = new Date();
     var mesdehoy = f.getMonth() + 1;
     $("#meshoy").text(meses[mesdehoy]);
-
+    var id_hijo = localStorage.getItem("id_hijo");
     $.ajax({
       url: urlServe,
       data: {
-        action: 'Consulgrafica'
+        action: 'Consulgrafica',
+        id_hijo: id_hijo
       },
       type: 'POST',
     }).done(function (data) {

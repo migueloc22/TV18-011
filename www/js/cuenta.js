@@ -8,14 +8,14 @@ var nrws = "";
 function noticias() {
   var id_User = vlIdUser();
   $.ajax({
-      url: urlServe,
-      type: 'POST',
-      data: {
-        action: 'noticias',
-        id_User:id_User
+    url: urlServe,
+    type: 'POST',
+    data: {
+      action: 'noticias',
+      id_User: id_User
 
-      }
-    })
+    }
+  })
     .done(function (data) {
       console.log(data);
       var datos = JSON.parse(data);
@@ -74,13 +74,13 @@ var chatuser = "";
 function chatuser() {
   var id_User = vlIdUser();
   $.ajax({
-      url: urlServe,
-      type: 'POST',
-      data: {
-        action: 'chatusuarios',
-        id_User:id_User
-      }
-    })
+    url: urlServe,
+    type: 'POST',
+    data: {
+      action: 'chatusuarios',
+      id_User: id_User
+    }
+  })
     .done(function (data) {
       console.log(data);
       var datos = JSON.parse(data);
@@ -121,7 +121,7 @@ function iduserchat(a) {
     data: {
       action: 'sessionchat',
       iduser: "'" + a + "'",
-      id_User:id_User
+      id_User: id_User
     },
     type: 'POST',
   }).done(function (data) {
@@ -135,18 +135,18 @@ var present = "";
 var avataresnuevos = "";
 
 function consultas() {
-  
-  var nombre=vlNombreUser();
+
+  var nombre = vlNombreUser();
   var id_User = vlIdUser();
   $.ajax({
-      url: urlServe,
-      type: 'POST',
-      data: {
-        action: 'sessionavatar',
-        nombre:nombre,
-        id_User:id_User
-      }
-    })
+    url: urlServe,
+    type: 'POST',
+    data: {
+      action: 'sessionavatar',
+      nombre: nombre,
+      id_User: id_User
+    }
+  })
     .done(function (data) {
       console.log(data);
       var datos = JSON.parse(data);
@@ -169,13 +169,13 @@ function datousuario() {
   var imguser = document.getElementById('smallImage');
 
   $.ajax({
-      url: urlServe,
-      type: 'POST',
-      data: {
-        action: 'sessionUsuario',
-        id_User:id_User
-      }
-    })
+    url: urlServe,
+    type: 'POST',
+    data: {
+      action: 'sessionUsuario',
+      id_User: id_User
+    }
+  })
     .done(function (data) {
       console.log(data);
       var datos = JSON.parse(data);
@@ -192,7 +192,7 @@ var presentacion2 = "";
 
 function myfunction(e) {
 
-  var nombre=vlNombreUser();
+  var nombre = vlNombreUser();
   var id_User = vlIdUser();
   var valornum = 0;
   if (e == "primr7") {
@@ -203,14 +203,14 @@ function myfunction(e) {
   // $("#presentacion2").hide(100);
 
   $.ajax({
-      url: urlServe,
-      type: 'POST',
-      data: {
-        action: 'sessionavatar',
-              nombre:nombre,
-              id_User:id_User
-      }
-    })
+    url: urlServe,
+    type: 'POST',
+    data: {
+      action: 'sessionavatar',
+      nombre: nombre,
+      id_User: id_User
+    }
+  })
     .done(function (data) {
       console.log(data);
       var datos = JSON.parse(data);
@@ -246,7 +246,7 @@ function hijoinsert(nombre, apellido, sexo, fecha, ciudad) {
       id_avatar: "'" + id_avatar + "'",
       ciudad: "'" + ciudad + "'",
       idhijos: "'" + idhijos + "'",
-      id_User:id_User
+      id_User: id_User
     },
     type: 'POST',
   }).done(function (data) {
@@ -266,13 +266,13 @@ function hijouser() {
   var datoshijo = "";
   var id_User = vlIdUser();
   $.ajax({
-      url: urlServe,
-      type: 'POST',
-      data: {
-        action: 'sessionHijo',
-        id_User:id_User
-      }
-    })
+    url: urlServe,
+    type: 'POST',
+    data: {
+      action: 'sessionHijo',
+      id_User: id_User
+    }
+  })
     .done(function (data) {
       console.log(data);
       var datos = JSON.parse(data);
@@ -311,14 +311,13 @@ function hijouser() {
 //rat
 var ht = "";
 
-function idcontroles(id) {
-
-
+function idcontroles(id_hijo) {
+  localStorage.setItem("id_hijo",id_hijo);
   $.ajax({
     url: urlServe,
     data: {
       action: 'ConsultaAvatart',
-      id: "'" + id + "'"
+      id_hijo: "'" + id_hijo + "'"
     },
     type: 'POST',
   }).done(function (data) {
@@ -331,14 +330,12 @@ function idcontroles(id) {
     });
 
   });
-
-
   var datosimc = "";
   $.ajax({
     url: urlServe,
     data: {
       action: 'Consultaimctmb',
-      id: "'" + id + "'"
+      id_hijo: "'" + id_hijo + "'"
     },
     type: 'POST',
   }).done(function (data) {
@@ -361,7 +358,7 @@ function idcontroles(id) {
 
 
 function mescontrol() {
-  var id = localStorage.getItem("idhijos");
+  var id_hijo = localStorage.getItem("idhijos");
   var fecha = new Date();
   var meshoy = parseInt(fecha.getMonth() + 1);
   var aniohoy = parseInt(fecha.getFullYear());
@@ -373,7 +370,7 @@ function mescontrol() {
     url: urlServe,
     data: {
       action: 'Consultaimctmb',
-      id: "'" + id + "'"
+      id_hijo: "'" + id_hijo + "'"
     },
     type: 'POST',
   }).done(function (data) {
@@ -395,19 +392,10 @@ function mescontrol() {
       } else {
         alert("El proximo control es: " + fechacontrol);
       }
-
-
-
-
     });
 
   });
 }
-
-
-
-
-
 //perfilhijo();
 function perfilhijo() {
   var id_User = vlIdUser();
@@ -420,7 +408,7 @@ function perfilhijo() {
     type: 'POST',
     data: {
       action: 'sessionHijo',
-      id_User:id_User
+      id_User: id_User
     }
   }).done(function (data) {
     console.log(data);
@@ -504,7 +492,7 @@ function onPhotoDataSuccess(imageData) {
     data: {
       action: 'fotoperfil',
       foto: "'" + imagen + "'",
-      id_User:id_User
+      id_User: id_User
     },
     type: 'POST',
   }).done(function (data) {
@@ -546,7 +534,7 @@ function onPhotoURISuccess(imageURI) {
       data: {
         action: 'fotoperfil',
         foto: "'" + base64Image + "'",
-        id_User:id_User
+        id_User: id_User
 
       },
       type: 'POST',

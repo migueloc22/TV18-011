@@ -121,84 +121,73 @@ class Usuario{
 
 
       public function listadehijos($iduser){
-      $classconex= new conex();
-      $conn=$classconex->conec();
+            $classconex= new conex();
+            $conn=$classconex->conec();
             $datosespecial=$conn->enviarquery("SELECT * FROM usuario WHERE Id_usuario=$iduser");
+            if ($datosespecial!="") 
+            {
+                  $datosusuarios=$conn->enviarquery("SELECT distinct detalle_control.id_hijo FROM detalle_control");
+                  if ($datosusuarios!="") {
 
+                        $datoshijo=("SELECT max(detalle_control.fecha_control),estado.estado,detalle_control.id_hijo,hijos.id_hijo,avatar.avatares,hijos.nombrehijo,hijos.apellidohijo, detalle_control.fecha_control FROM detalle_control inner join estado on estado.idestado=detalle_control.idestado inner join hijos on hijos.id_hijo=detalle_control.id_hijo inner join avatar on avatar.idavatar = hijos.idavatar  WHERE");
 
-            if ($datosespecial!="") {
-            $datosusuarios=$conn->enviarquery("SELECT distinct detalle_control.id_hijo FROM detalle_control");
-      if ($datosusuarios!="") {
+                        //inner join avatar on avatar.idavatar = hijos.idavatar
 
-            $datoshijo=("SELECT max(detalle_control.fecha_control),estado.estado,detalle_control.id_hijo,hijos.id_hijo,avatar.avatares,hijos.nombrehijo,hijos.apellidohijo, detalle_control.fecha_control FROM detalle_control inner join estado on estado.idestado=detalle_control.idestado inner join hijos on hijos.id_hijo=detalle_control.id_hijo inner join avatar on avatar.idavatar = hijos.idavatar  WHERE");
-
-      //inner join avatar on avatar.idavatar = hijos.idavatar
-
-      foreach ($datosusuarios as  $value) {
-      $idhijo=$value['id_hijo'];
-                  $datoshijo.=(" detalle_control.id_hijo=$idhijo or ");
-      }
-
-
-      $data = trim($datoshijo,' or');
-
-      $data.=(" group by detalle_control.id_hijo desc");
-
-      $enviodar=$conn->enviarquery($data);
-
-
-      }
+                        foreach ($datosusuarios as  $value) {
+                              $idhijo=$value['id_hijo'];
+                              $datoshijo.=(" detalle_control.id_hijo=$idhijo or ");
+                        }
+                        $data = trim($datoshijo,' or');
+                        $data.=(" group by detalle_control.id_hijo desc");
+                        $enviodar=$conn->enviarquery($data);
+                  }
             }
-      return $enviodar;
-      if (!$datosusuarios) {
-      echo $this->error="error";
-      }
+            return $enviodar;
+            if (!$datosusuarios) {
+             echo $this->error="error";
+            }
 
 
       }
 
 
       public function noticiausuario($idusuario){
-      $classconex= new conex();
-      $conn=$classconex->conec();
-            $datosespecial=$conn->enviarquery("SELECT * FROM usuario WHERE Id_usuario=$idusuario");
-            if ( $datosespecial!=null) {
-            $datosnotica=$conn->enviarquery("SELECT * FROM blog inner join usuario on usuario.Id_usuario=blog.Id_usuario inner join
-            hoja_de_vida on usuario.Id_usuario =hoja_de_vida.Id_usuario order by blog.idblog desc");
-
+            $classconex= new conex();
+            $conn=$classconex->conec();
+                  $datosespecial=$conn->enviarquery("SELECT * FROM usuario WHERE Id_usuario=$idusuario");
+                  if ( $datosespecial!=null) {
+                        $datosnotica=$conn->enviarquery("SELECT * FROM blog inner join usuario on usuario.Id_usuario=blog.Id_usuario inner join
+                        hoja_de_vida on usuario.Id_usuario =hoja_de_vida.Id_usuario order by blog.idblog desc");
+                  }
+            return $datosnotica;
+            if (!$datosnotica) {
+                  echo $this->error="error";
             }
-      return $datosnotica;
-      if (!$datosnotica) {
-      echo $this->error="error";
-      }
       }
 
 
       public function usuariolocal($idusuario){
-      $classconex= new conex();
-      $conn=$classconex->conec();
+            $classconex= new conex();
+            $conn=$classconex->conec();
             $datosespecial=$conn->enviarquery("SELECT * FROM usuario WHERE Id_usuario=$idusuario");
-
             foreach ($datosespecial as $datos) {
-            $idrol=$datos['idrol'];
+                  $idrol=$datos['idrol'];
             }
-            switch ($idrol) {
-            case '2':
-            $datosClientu=$conn->enviarquery("SELECT * FROM usuario inner join hoja_de_vida on usuario.Id_usuario =hoja_de_vida.Id_usuario  WHERE Id_usuario=$idusuario");
-            break;
-                  case '3':
-            $datosClientu=$conn->enviarquery("SELECT * FROM usuario  WHERE Id_usuario=$idusuario");
-
-            break;
-            
-            default:
-            echo "error";
-            break;
+                  switch ($idrol) {
+                        case '2':
+                              $datosClientu=$conn->enviarquery("SELECT * FROM usuario inner join hoja_de_vida on usuario.Id_usuario =hoja_de_vida.Id_usuario  WHERE Id_usuario=$idusuario");
+                        break;
+                        case '3':
+                              $datosClientu=$conn->enviarquery("SELECT * FROM usuario  WHERE Id_usuario=$idusuario");
+                        break;
+                        default:
+                              echo "error";
+                        break;
+                  }
+            return $datosClientu;
+            if (!$datosClientu) {
+                  echo $this->error="error";
             }
-      return $datosClientu;
-      if (!$datosClientu) {
-      echo $this->error="error";
-      }
       }
 
 
@@ -236,9 +225,9 @@ class Usuario{
       public function ExistUser($correo){
             $classconex= new conex();
             $conn=$classconex->conec();
-                  $datosClient=$conn->enviarquery("SELECT * FROM usuario WHERE correo=".$correo."");
-                  return $datosClient;
-                  if (!$datosClient) {
+            $datosClient=$conn->enviarquery("SELECT * FROM usuario WHERE correo=".$correo."");
+            return $datosClient;
+            if (!$datosClient) {
                   echo $this->error="error";
             }
       }
@@ -330,27 +319,27 @@ class Usuario{
 
 
       public function consulDatImc($id){
-      $classconex= new conex();
-      $conn=$classconex->conec();
+            $classconex= new conex();
+            $conn=$classconex->conec();
             $datosClient=$conn->enviarquery("SELECT * FROM detalle_control INNER JOIN hijos  on hijos.id_hijo = detalle_control.id_hijo inner join estado on detalle_control.idestado =estado.idestado
-                  inner join actividad on detalle_control.idactividad = actividad.idactividad inner join avatar on avatar.idavatar= hijos.idavatar
-                  WHERE hijos.id_hijo=$id order by detalle_control.iddetalle_control desc  limit 1");
+                        inner join actividad on detalle_control.idactividad = actividad.idactividad inner join avatar on avatar.idavatar= hijos.idavatar
+                        WHERE hijos.id_hijo=$id order by detalle_control.iddetalle_control desc  limit 1");
             return $datosClient;
             if (!$datosClient) {
-            echo $this->error="error";
-      }
+                  echo $this->error="error";
+            }
       }
 
 
       public function consulDatImcgrafica($id){
-      $classconex= new conex();
-      $conn=$classconex->conec();
+            $classconex= new conex();
+            $conn=$classconex->conec();
             $datosClient=$conn->enviarquery("SELECT * FROM detalle_control INNER JOIN hijos  on hijos.id_hijo = detalle_control.id_hijo inner join estado on detalle_control.idestado =estado.idestado
             WHERE hijos.id_hijo=$id");
-      return $datosClient;
-      if (!$datosClient) {
-      echo $this->error="error";
-      }
+            return $datosClient;
+            if (!$datosClient) {
+                  echo $this->error="error";
+            }
       }
 
 
