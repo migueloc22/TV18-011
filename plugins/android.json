@@ -13,6 +13,18 @@
     "cordova-plugin-file": {
       "PACKAGE_NAME": "apptivos.co"
     },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
     "cordova-plugin-network-information": {
       "PACKAGE_NAME": "apptivos.co"
     },
@@ -40,9 +52,6 @@
       "PACKAGE_NAME": "apptivos.co"
     },
     "cordova-plugin-dialogs": {
-      "PACKAGE_NAME": "apptivos.co"
-    },
-    "cordova-plugin-fcm": {
       "PACKAGE_NAME": "apptivos.co"
     },
     "cordova-plugin-geolocation": {

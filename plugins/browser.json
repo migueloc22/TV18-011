@@ -12,6 +12,15 @@
     },
     "cordova-plugin-file": {
       "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "apptivos.co"
     }
   },
   "dependent_plugins": {
@@ -37,6 +46,24 @@
       "PACKAGE_NAME": "apptivos.co"
     },
     "cordova-plugin-fcm": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "apptivos.co"
+    },
+    "cordova-plugin-vibration": {
       "PACKAGE_NAME": "apptivos.co"
     }
   }

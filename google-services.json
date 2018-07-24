@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "500834972892",
-    "firebase_url": "https://chat-190708.firebaseio.com",
-    "project_id": "chat-190708",
-    "storage_bucket": "chat-190708.appspot.com"
+    "project_number": "794599254550",
+    "firebase_url": "https://apptivos-521e4.firebaseio.com",
+    "project_id": "apptivos-521e4",
+    "storage_bucket": "apptivos-521e4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:500834972892:android:b089b25d3878d28a",
+        "mobilesdk_app_id": "1:794599254550:android:b7375678fa675577",
         "android_client_info": {
-          "package_name": "apptivos.co"
+          "package_name": "com.apptivos"
         }
       },
       "oauth_client": [
         {
-          "client_id": "500834972892-h71bsgstn24cvbc7u75u5aogmdqa2a2r.apps.googleusercontent.com",
+          "client_id": "794599254550-86qppq580quhsahuke11fc3c1m0af98e.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCa7i5u6TQpYHyefRrhyVFvm3kw2cMa5h4"
+          "current_key": "AIzaSyDnJoTVrqw2cflUdx36CaEY6qTXug1YU0E"
         }
       ],
       "services": {

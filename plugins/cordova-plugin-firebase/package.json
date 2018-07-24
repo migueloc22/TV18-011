@@ -1,8 +1,8 @@
 {
   "_from": "cordova-plugin-firebase",
-  "_id": "cordova-plugin-firebase@0.1.25",
+  "_id": "cordova-plugin-firebase@1.0.5",
   "_inBundle": false,
-  "_integrity": "sha1-fh+W2FiKGdIhi7Tbyg1cRC8eJlE=",
+  "_integrity": "sha1-s3swFRRnCbvMwN/IGEYZCbOM7Io=",
   "_location": "/cordova-plugin-firebase",
   "_phantomChildren": {},
   "_requested": {
@@ -19,10 +19,10 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-firebase/-/cordova-plugin-firebase-0.1.25.tgz",
-  "_shasum": "7e1f96d8588a19d2218bb4dbca0d5c442f1e2651",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-firebase/-/cordova-plugin-firebase-1.0.5.tgz",
+  "_shasum": "b37b3015146709bbccc0dfc818461909b38cec8a",
   "_spec": "cordova-plugin-firebase",
-  "_where": "C:\\xampp\\htdocs\\camara",
+  "_where": "C:\\xampp\\htdocs\\GitHub\\TV18-011",
   "author": {
     "name": "Robert Arnesson"
   },
@@ -38,6 +38,7 @@
       "browser"
     ]
   },
+  "dependencies": {},
   "deprecated": false,
   "description": "Cordova plugin for Google Firebase",
   "homepage": "https://github.com/arnesson/cordova-plugin-firebase#readme",
@@ -57,5 +58,22 @@
     "type": "git",
     "url": "git+https://github.com/arnesson/cordova-plugin-firebase.git"
   },
-  "version": "0.1.25"
+  "scripts": {
+    "postversion": "git push && git push --tags && npm publish",
+    "test": "npm run test:ios && npm run test:android && npm run test:browser",
+    "test:android": "npm run test:cordova@6.5.0:android@6.4.0 && npm run test:cordova@7.1.0:android@7.1.0 && npm run test:cordova@8.0.0:android@7.1.0",
+    "test:browser": "npm run test:cordova@6.5.0:browser@6.4.0 && npm run test:cordova@7.1.0:browser@7.1.0 && npm run test:cordova@8.0.0:browser@7.1.0",
+    "test:cordova@6.5.0:android@6.4.0": "sh ./test/test-default.sh 6.5.0 android 6.4.0 && sh ./test/test-with-2-plugins.sh 6.5.0 android 6.4.0 cordova-plugin-request-location-accuracy cordova-android-play-services-gradle-release",
+    "test:cordova@6.5.0:browser@5.0.3": "sh ./test/test-default.sh 6.5.0 browser 5.0.3",
+    "test:cordova@6.5.0:ios@4.5.4": "sh ./test/test-default.sh 6.5.0 ios 4.5.4",
+    "test:cordova@7.1.0:android@7.1.0": "sh ./test/test-default.sh 7.1.0 android 7.1.0 && sh ./test/test-with-2-plugins.sh 7.1.0 android 7.1.0 cordova-plugin-request-location-accuracy cordova-android-play-services-gradle-release",
+    "test:cordova@7.1.0:browser@5.0.3": "sh ./test/test-default.sh 7.1.0 browser 5.0.3",
+    "test:cordova@7.1.0:ios@4.5.4": "sh ./test/test-default.sh 7.1.0 ios 4.5.4",
+    "test:cordova@8.0.0:android@7.1.0": "sh ./test/test-default.sh 8.0.0 android 7.1.0 && sh ./test/test-with-2-plugins.sh 8.0.0 android 7.1.0 cordova-plugin-request-location-accuracy cordova-android-play-services-gradle-release",
+    "test:cordova@8.0.0:browser@5.0.3": "sh ./test/test-default.sh 8.0.0 browser 5.0.3",
+    "test:cordova@8.0.0:ios@4.5.4": "sh ./test/test-default.sh 8.0.0 ios 4.5.4",
+    "test:ios": "npm run test:cordova@6.5.0:ios@4.5.4 && npm run test:cordova@7.1.0:ios@4.5.4 && npm run test:cordova@8.0.0:ios@4.5.4",
+    "version": "node ./bump-version.js && git add -A plugin.xml"
+  },
+  "version": "1.0.5"
 }

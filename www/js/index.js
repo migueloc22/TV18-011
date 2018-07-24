@@ -20,37 +20,41 @@ var app = {
     // Application Constructor
     initialize: function () {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+        // window.FirebasePlugin.getToken(function(token) {
+        //     // save this server-side and use it to push notifications to this device
+        //     alert(token);
+        // }, function(error) {
+        //     alert(error);
+        // });
     },
 
 
     onDeviceReady: function () {
-        this.token();
+       
         //document.addEventListener("online", online, false);
         //document.addEventListener("offline", onOffline, false);
-
-        $("#enviar").on('click', function () {
-            window.FirebasePlugin.getToken(function (token) {
-                alert(token);
-                console.log("firebase token:  " + token);
-                $("#textto").text(token);
-            }, function (error) {
-                console.error(error);
-            });
-            window.FirebasePlugin.subscribe("apptivosesdetodos");
+        
+         window.FirebasePlugin.getToken(function(token) {
+            // save this server-side and use it to push notifications to this device
+            alert("token es "+token);
+        }, function(error) {
+            alert("error");
         });
+        // $("#enviar").on('click', function () {
+        //     window.FirebasePlugin.getToken(function (token) {
+        //         alert(token);
+        //         console.log("firebase token:  " + token);
+        //         $("#textto").text(token);
+        //     }, function (error) {
+        //         console.error(error);
+        //     });
+        //     window.FirebasePlugin.subscribe("apptivosesdetodos");
+        // });
     },
 
 
 
-    token: function () {
-        window.FirebasePlugin.onTokenRefresh(function (token) {
-            // save this server-side and use it to push notifications to this device
-            console.log(token);
-        }, function (error) {
-            console.error(error);
-        });
-
-    }
+    
 
 };
 

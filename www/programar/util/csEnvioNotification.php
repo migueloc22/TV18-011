@@ -8,7 +8,7 @@ class csEnvioNotification
 		// API access key from Google API's Console
 			// API access key from Google API's Console
 		// API access key from Google API's Console
-		define( 'API_ACCESS_KEY', 'TU API KEY');
+		define( 'API_ACCESS_KEY', '794599254550');
 
 		$registrationIds = [$token];
 

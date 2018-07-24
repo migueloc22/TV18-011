@@ -15,6 +15,9 @@
           <i class="ion-ios-cloud"></i>
           Enviar
         </button>
+        <button class="button button-full button-energized " id="btnVer_recuperar">
+          ver
+        </button>
 
       </div>
     </ion-list>
@@ -24,6 +27,9 @@
   var ipServe = "http://10.73.52.201/GitHub/TV18-011/";
   var ruta = "www/programar/controlador/Clogin.php";
   var urlServe = ipServe + ruta;
+  $("#btnVer_recuperar").on('click', function (){
+    alert("hola Migueloc22");
+  });
   $("#btnEnviar_recuperar").on('click', function () {
     var correo = $("#email_recuperar").val();
     if (vltxtCorreo_recuperar()) {
